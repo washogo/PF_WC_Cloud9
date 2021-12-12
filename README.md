@@ -1,24 +1,41 @@
-# README
+# LearnCommunity
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+- 学習マッチングアプリ
 
-* Ruby version
+### サイトテーマ
+- 学びたい人と教えたい人とのマッチングを行う
+- 学びのためのコミュニティ形成と拡大
+- 教えることによるビジネスチャンスの提供
 
-* System dependencies
+### テーマを選んだ理由
+- 現在は少年院に勤務しているが、矯正教育でも学校教育でも、社会の変化に対応するには柔軟性に欠ける部分が見受けられる
+- 教える側も教わる側も最新の情報を自由に得るためにはそのシステムを構築する必要があると考えた
+- 世代を問わずに学びたいことを学べるような環境やそれを就労へとつなぐことができるようなシステムの構築への関心
 
-* Configuration
+### ターゲットユーザ
+- 自分のスキルで稼ぎたい・活用したい人
+- 趣味や仕事や生活のために学びたい人
 
-* Database creation
+### 主な利用シーン
+- オンライン・オフラインでの講座の集客
+- 教材等を使用した自主学習
+- コミュニティでの交流
 
-* Database initialization
+## 設計書
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1zCcYDWUJrLt_U1YNHM8gDEra-xxR4HY-EpiFeoCrhpM/edit#gid=0
 
-* Deployment instructions
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
