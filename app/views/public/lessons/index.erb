@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>講座名</th>
+            <th>カテゴリー</th>
+            <th>タグ</th>
+            <th>受講場所</th>
+            <th>期間</th>
+            <th>価格</th>
+            <th>開講状況</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @lessons.each |lesson| do%>
+          <tr>
+            <td><%= lesson.name %></td>
+            <td><%= lesson.category.name %></td>
+            <td>
+              <% lesson.tags.each |tag| do %>
+              <% end %>
+            </td>
+            <td><%= lesson.attending_style %></td>
+            <td><%= lesson.contract_period %></td>
+            <td><%= lesson.price %></td>
+            <td>
+              <% if lesson.is_in_lecture %>
+                開講中
+              <% if else %>
+                閉講
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

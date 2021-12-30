@@ -9,6 +9,7 @@ class Public::LessonsController < ApplicationController
   end
   
   def index
+    @lessons = Lesson.all
   end
   
   def edit
