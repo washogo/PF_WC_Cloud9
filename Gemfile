@@ -63,3 +63,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # bootstrap導入
 gem 'bootstrap', '~> 5.0.2'
+
+# bootstrapはjQueryに依存しているため
+gem 'jquery-rails'
+
+# deviseの導入
+gem 'devise'

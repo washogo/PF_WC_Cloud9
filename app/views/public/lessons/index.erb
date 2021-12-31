@@ -14,12 +14,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @lessons.each |lesson| do%>
+          <% @lessons.each do |lesson| %>
           <tr>
             <td><%= lesson.name %></td>
             <td><%= lesson.category.name %></td>
             <td>
-              <% lesson.tags.each |tag| do %>
+              <% lesson.tags.each do |tag| %>
               <% end %>
             </td>
             <td><%= lesson.attending_style %></td>
@@ -28,7 +28,7 @@
             <td>
               <% if lesson.is_in_lecture %>
                 開講中
-              <% if else %>
+              <% else %>
                 閉講
               <% end %>
             </td>
