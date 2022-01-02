@@ -6,6 +6,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def mine
+    @customer=current_customer
   end
 
   def show

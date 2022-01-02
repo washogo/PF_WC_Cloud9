@@ -1,1 +1,28 @@
-<p>テスト</p>
+<div class="row d-flex bg-primary">
+  <h2 class="col-2 me-auto ms-3"><%= @customer.nickname %></h2>
+  <%= link_to "編集する", current_customer_add_path, class: "btn btn-info col-1 me-3" %>
+  <%= link_to "基本情報へ", current_customer_personal_path, class: "btn btn-info col-1 me-5" %>
+</div>
+<div class="container">
+  <%= attachment_image_tag @customer, :image, :fill, 50, 50, format: 'png', fallback: "22322188.png", class: "mt-5"%>
+  <h4 class="mt-5">プロフィール</h4>
+  <div class="card col-6">
+    <div class="card-body">
+      <%= @customer.profile %>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-6">
+      <h4>学び中</h4>
+      <ul>
+        
+      </ul>
+    </div>
+    <div class="col-6">
+      <h4>教え中</h4>
+      <ul>
+        
+      </ul>
+    </div>
+  </div>    
+</div>
