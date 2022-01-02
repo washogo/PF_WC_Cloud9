@@ -2,7 +2,8 @@
 <div class="container">
   <div class="row">
     <%= render 'layouts/sidebar' %>
-    <div class="col-10">
+    <div class="col-9 offset-md-1">
+      <%= render 'layouts/menue' %>
       <div class="row">
         <%= attachment_image_tag @customer, :image, :fill, 50, 50, format: 'png', fallback: "22322188.png", class: "mt-5 col-1"%>
         <h2 class="col-7 me-auto ms-3 d-flex align-items-end"><%= @customer.nickname %></h2>
