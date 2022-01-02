@@ -1,8 +1,14 @@
+<%= render 'layouts/before_sign_in_nav' %>
 <div class="container">
   <div class="row">
-    <div class="col">
-      <p>Top</p>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+    <%= render 'layouts/sidebar' %>
+    <div class="col-10">
+      <%= render 'layouts/menue' %>
+      <h2 class="mt-5">講座一覧</h2>
+      <table>
+        <thead></thead>
+        <tbody></tbody>
+      </table>
     </div>
   </div>
 </div>
