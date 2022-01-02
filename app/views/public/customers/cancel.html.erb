@@ -1,0 +1,25 @@
+<%= render 'layouts/after_sign_in_nav', customer: current_customer %>
+<div class="container">
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <%= render 'layouts/menue' %>
+      <h2 class="mt-5">退会確認画面</h2>
+      <p class="fs-1 fw-bold mt-5">
+        本当に退会しますか？</br>
+        退会後は、全ての講座を受講することができなくなります。
+      </p>
+      <div class="row">
+        <div class="col-2 offset-md-2">
+          <%= form_with model:@customer, url: {controller: 'customers', action: 'quit'}, method: :patch, local:true do |f| %>
+            <%= f.hidden_field:is_deleted, :value => true %>
+            <%= f.submit "退会する", class: "btn btn-danger"%>
+          <% end %>
+        </div>
+        <div class="col-2">
+          <%= link_to "退会しない", customer_path(current_customer), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
