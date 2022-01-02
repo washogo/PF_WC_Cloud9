@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     resources :customers, only:[:show]
-    get '/current_customer/add', to: 'customers#add'
-    get '/current_customer/mine', to: 'customers#mine'
+    # get '/current_customer/mine', to: 'customers#mine'
+    # get '/current_customer/mine', to: 'customers#mine'
+    
     get '/current_customer/personal', to: 'customers#personal'
-    get '/current_customer/unique', to: 'customers#unique'
     get '/current_customer/transfer', to: 'customers#transfer'
     patch '/current_customer', to: 'customers#update'
     get '/current_customer/cancel', to: 'customers#cancel'

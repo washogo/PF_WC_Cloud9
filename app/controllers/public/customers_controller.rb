@@ -1,22 +1,15 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except:[:show]
 
-  def add
-    @customer=current_customer
-  end
-
-  def mine
+  def unique
     @customer=current_customer
   end
 
   def show
+    @customer=Customer.find(params[:id])
   end
 
   def personal
-
-  end
-
-  def unique
   end
 
   def transfer
