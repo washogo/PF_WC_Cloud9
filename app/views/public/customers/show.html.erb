@@ -1,31 +1,38 @@
-<div class="row d-flex bg-primary">
-  <h2 class="col-2 me-auto ms-3"><%= @customer.nickname %></h2>
-  <% if @customer==current_customer %>
-    <%= link_to "編集する", current_customer_add_path, class: "btn btn-info col-1 me-3" %>
-    <%= link_to "基本情報へ", current_customer_personal_path, class: "btn btn-info col-1 me-5" %>
-  <% end %>
-</div>
+<%= render 'layouts/after_sign_in_nav', customer: current_customer %>
 <div class="container">
-  <%= attachment_image_tag @customer, :image, :fill, 50, 50, format: 'png', fallback: "22322188.png", class: "mt-5"%>
-  <h4 class="mt-5">プロフィール</h4>
-  <div class="card col-6">
-    <div class="card-body">
-      <%= @customer.profile %>
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-10">
+      <div class="row">
+        <%= attachment_image_tag @customer, :image, :fill, 50, 50, format: 'png', fallback: "22322188.png", class: "mt-5 col-1"%>
+        <h2 class="col-7 me-auto ms-3 d-flex align-items-end"><%= @customer.nickname %></h2>
+        <% if @customer==current_customer %>
+        <div class="col-3 d-flex align-items-end">
+          <%= link_to "編集する", current_customer_unique_path, class: "btn btn-light me-3" %>
+          <%= link_to "基本情報へ", current_customer_personal_path, class: "btn btn-light" %>
+        </div>
+        <% end %>
+      </div>
+      <h4 class="mt-5">プロフィール</h4>
+      <div class="card col-6">
+        <div class="card-body">
+          <%= @customer.profile %>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-6">
+          <h4>学び中</h4>
+          <ul>
+
+          </ul>
+        </div>
+        <div class="col-6">
+          <h4>教え中</h4>
+          <ul>
+
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row mt-5">
-    <div class="col-6">
-      <h4>学び中</h4>
-      <ul>
-        
-      </ul>
-    </div>
-    <div class="col-6">
-      <h4>教え中</h4>
-      <ul>
-        
-      </ul>
-    </div>
-  </div>    
 </div>
-<%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>

@@ -1,0 +1,22 @@
+<div class="row d-flex bg-info">
+  <div class="me-auto col-3">
+    <%= link_to root_path do %>
+      <%= image_tag '卒業生アイコン.png', height: 100, width: 100 %>
+    <% end %>
+  </div>
+  <nav class="col-3 navbar navbar-expand-lg navbar-light">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "HOME", root_path, class: "nav-link h5 me-2" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "マイページ", customer_path(customer.id), class: "nav-link h5 me-2" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link h5" %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

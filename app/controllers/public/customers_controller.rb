@@ -6,6 +6,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def show
+    @correct_customer=current_customer
     @customer=Customer.find(params[:id])
   end
 
