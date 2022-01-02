@@ -14,12 +14,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def transfer
+    @customer=current_customer
   end
 
   def update
     @customer=current_customer
     @customer.update(customer_params)
-    byebug
     redirect_to customer_path(current_customer)
   end
 

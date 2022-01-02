@@ -1,0 +1,19 @@
+<%= render 'layouts/after_sign_in_nav', customer: current_customer %>
+<div class="container">
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <%= render 'layouts/menue' %>
+      <h2 class="mt-5">振込先情報確認・編集画面</h2>
+      <%= form_with model:@customer, local:true do |f| %>
+        <div class="col-3 mt-5">
+          <%= f.text_field:transfer_target, class: "form-control" %>
+        </div>
+        <div class="row mt-5">
+          <%= link_to "キャンセル", root_path, class: "btn btn-info col-2 me-3" %>
+          <%= f.submit "次へ", class: "btn btn-primary col-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
