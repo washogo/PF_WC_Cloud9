@@ -1,6 +1,8 @@
+<%= render 'layouts/before_sign_in_nav' %>
 <div class="container">
-  <div class="row m-5">
-    <div class="col offset-md-4">
+  <div class="row mt-5">
+    <%= render 'layouts/sidebar' 
+    <div class="col-8 offset-md-2">
       <h2>ログイン画面</h2>
 
       <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>

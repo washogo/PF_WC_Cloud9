@@ -19,4 +19,8 @@ Rails.application.routes.draw do
     patch '/current_customer/quit', to: 'customers#quit'
     resources :lessons, except:[:destroy]
   end
+  
+  namespace :admin do
+    root to: 'homes#top'
+  end
 end

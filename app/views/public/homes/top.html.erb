@@ -1,5 +1,5 @@
 <% if customer_signed_in?%>
-<%= render 'layouts/after_sign_in_nav', customer: current_customer %>
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
 <% else %>
 <%= render 'layouts/before_sign_in_nav' %>
 <% end %>

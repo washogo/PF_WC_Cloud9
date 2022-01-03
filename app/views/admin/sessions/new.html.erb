@@ -1,20 +1,23 @@
 <div class="container">
-  <div class="col offset-md-4">
-    <h2 class="mt-5">ログイン画面</h2>
-    <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field col-3 mt-5">
-        <%= f.label :email, "メールアドレス", class: "form-label" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-      </div>
-    
-      <div class="field col-3 mt-5">
-        <%= f.label :password, "パスワード", class: "form-label" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-      </div>
-    
-      <div class="actions col-3 mt-5">
-        <%= f.submit "ログイン", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-8 offset-md-2">
+      <h2 class="mt-5">ログイン画面</h2>
+      <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field col-3 mt-5">
+          <%= f.label :email, "メールアドレス", class: "form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+      
+        <div class="field col-3 mt-5">
+          <%= f.label :password, "パスワード", class: "form-label" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+      
+        <div class="actions col-3 mt-5">
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
