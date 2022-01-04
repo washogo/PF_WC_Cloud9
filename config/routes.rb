@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   
   namespace :admin do
     root to: 'homes#top'
-    resources :customers, except:[:new, :crete, :destroy]
+    resources :customers, except:[:new, :create, :destroy]
   end
 end
