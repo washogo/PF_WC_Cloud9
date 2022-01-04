@@ -24,7 +24,12 @@
 - コミュニティでの交流
 
 ## 設計書
-
+### テーブル定義書
+https://docs.google.com/spreadsheets/d/1CY7PtCUNArmCF8RdCtsjK4dsRwJJTxydyFswzWU0LJ4/edit#gid=1960613479
+### ER図
+https://app.diagrams.net/#G1HYTX6X3MFsg-mqYvUl2jDxipMxmN7nyU
+### 詳細設計書 
+https://docs.google.com/spreadsheets/d/12DnjDBeTlLwlQ1Wg2f5YK5wqx4b1EoX6EnrvQbWLvl0/edit#gid=0
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1zCcYDWUJrLt_U1YNHM8gDEra-xxR4HY-EpiFeoCrhpM/edit#gid=0
