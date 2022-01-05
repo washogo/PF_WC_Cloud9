@@ -1,0 +1,6 @@
+ja:
+  enums:
+    lessons:
+      attending_style:
+        online: オンライン
+        offline: オフライン

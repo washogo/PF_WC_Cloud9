@@ -1,0 +1,52 @@
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<div class="container">
+
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <%= render 'public/menue' %>      
+      <h2 class="mt-5">教えたい！</h2>
+      <%= form_with model:@lesson, local:true do |f| %>
+      <div class="col-3 mt-5">
+        <%= f.label:name, "講座名", class: "form-label" %>
+        <%= f.text_field:name, class: "form-control" %>
+      </div>
+      <div class="row mt-5">
+        <div class="col-6">
+          <%= f.label:content, "内容", class: "form-label" %>
+          <%= f.text_area:content, class: "form-control" %>
+        </div>
+        <div class="col-3">
+          <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "カテゴリー選択"}), class: "form-select" %> 
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-6">
+          <p>タグ選択</p>
+        </div>
+        <div class="col-3">
+          <%= f.select:attending_style, [ ["オンライン", "online"], ["オフライン", "offline"] ], class: "form-select" %>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-3">
+          <%= f.label:contract_period, "契約期間", class: "form-label" %>
+          <%= f.number_field:contract_period, class: "form-control" %>
+        </div>
+        <div class="col-3">
+          <%= f.label:price, "価格", class: "form-label" %>
+          <%= f.number_field:price, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-6 mt-5">
+        <%= f.label:is_in_lecture, "開講状況", class: "form-label" %>
+        <%= f.radio_button:is_in_lecture, true %>開講中 <%= f.radio_button:is_in_lecture, false %>準備中
+      </div>
+      <div class="row mt-5">
+        <%= f.submit "登録する", class: "btn btn-primary col-3 me-2" %>
+        <%= link_to "やめる", lessons_path, class: "btn btn-info col-3" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -73,3 +73,6 @@ gem 'devise'
 # refileの導入
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
+# enumで定義した値をi18n化させて日本語に変換する
+gem 'enum_help'
