@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_05_061051) do
+ActiveRecord::Schema.define(version: 2022_01_05_135720) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2022_01_05_061051) do
     t.integer "category_id", null: false
     t.integer "tag_id", null: false
     t.integer "evaluation_id", null: false
-    t.integer "access_id", null: false
     t.string "name", null: false
     t.text "content", null: false
     t.integer "attending_style", null: false
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(version: 2022_01_05_061051) do
     t.boolean "is_in_lecture", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "access", null: false
   end
 
 end

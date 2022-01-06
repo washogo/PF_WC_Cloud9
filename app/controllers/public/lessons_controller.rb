@@ -6,6 +6,9 @@ class Public::LessonsController < ApplicationController
   end
 
   def create
+    @lesson=Lesson.new(lesson_params)
+    @lesson.save!
+    redirect_to lessons_path
   end
 
   def show
@@ -19,5 +22,11 @@ class Public::LessonsController < ApplicationController
   end
 
   def update
+  end
+
+  private
+
+  def lesson_params
+    params.require(:lesson).permit(:name, :content, :attending_style, :contract_period, :price, :access, :is_in_lecture, :category_id)
   end
 end
