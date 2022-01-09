@@ -1,12 +1,12 @@
 <%= render 'layouts/before_sign_in_nav' %>
 <div class="container">
   <div class="row mt-5">
-    <%= render 'layouts/sidebar' 
+    <%= render 'layouts/sidebar' %>
     <div class="col-8 offset-md-2">
       <h2>新規会員登録画面</h2>
       <%= form_with(model: resource, scope: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
-      
+
       <div class="row">
         <div class="field col-3 mt-3">
           <%= f.label:last_name, "姓", class:"form_label" %>
@@ -61,7 +61,7 @@
         <%= f.submit "会員登録する", class: "btn btn-info"%>
       </div>
       <% end %>
-  
+
       <%= render "public/shared/links" %>
     </div>
   </div>

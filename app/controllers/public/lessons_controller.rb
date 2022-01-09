@@ -1,13 +1,18 @@
 class Public::LessonsController < ApplicationController
   before_action :authenticate_customer!
+
   def new
     @lesson=Lesson.new
+    @lesson.customer_id=current_customer.id
     @categories=Category.all
   end
 
   def create
     @lesson=Lesson.new(lesson_params)
-    @lesson.save!
+    @lesson.customer_id=current_customer.id
+    tag_list=params[:lesson][:tags][:name].split(',')
+    @lesson.save
+    @lesson.save_tag(tag_list)
     redirect_to lessons_path
   end
 

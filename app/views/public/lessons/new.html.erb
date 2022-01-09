@@ -21,7 +21,10 @@
           </div>
         </div>
         <div class="col-9 mt-5">
-          <p>タグ選択</p>
+          <h2>タグ追加</h2>
+          <%= f.fields_for:tags do |tag| %>
+            <%= tag.text_field:name %>
+          <% end %>
         </div>
         <div class="row mt-5">
           <div class="col-3">
@@ -36,7 +39,7 @@
         <div class="row mt-5">
           <div class="col-3">
             <%= f.label:contract_period, "契約期間", class: "form-label" %></br>
-            <%= f.select:contract_period, [ ["単発", "one"], ["１ヶ月", "month"], ["６ヶ月", "half"], ["１年", "year"] ] %>
+            <%= f.select:contract_period, [ ["単発", 0], ["１ヶ月", 1], ["６ヶ月", 6], ["１年", 12] ] %>
           </div>
           <div class="col-4">
             <%= f.label:price, "価格", class: "form-label" %>

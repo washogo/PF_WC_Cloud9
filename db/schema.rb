@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_05_135720) do
+ActiveRecord::Schema.define(version: 2022_01_09_121108) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -54,10 +54,22 @@ ActiveRecord::Schema.define(version: 2022_01_05_135720) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "evaluation_lists", force: :cascade do |t|
+    t.integer "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "evaluation_id", null: false
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "evaluation", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.integer "category_id", null: false
-    t.integer "tag_id", null: false
-    t.integer "evaluation_id", null: false
     t.string "name", null: false
     t.text "content", null: false
     t.integer "attending_style", null: false
@@ -67,6 +79,20 @@ ActiveRecord::Schema.define(version: 2022_01_05_135720) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "access", null: false
+    t.integer "customer_id", null: false
+  end
+
+  create_table "tag_lists", force: :cascade do |t|
+    t.integer "lesson_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

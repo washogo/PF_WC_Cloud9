@@ -1,6 +1,6 @@
 ja:
   enums:
-    lessons:
+    lesson:
       attending_style:
-        online: オンライン
-        offline: オフライン
+        online: "オンライン"
+        offline: "オフライン"
