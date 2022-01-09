@@ -1,0 +1,62 @@
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<div class="container">
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <%= render 'public/menue' %>
+      <h2 class="col-3 mt-5">【<%= @lesson.name %>】</h2>
+      <div class="row mt-5">
+        <h5 class="col-2">評価平均</h4>
+      </div>
+      <div class="col-3 mt-5">
+        <h5>内容</h5>
+        <p class="fs-5 border ms-3"><%= @lesson.content %></p>
+      </div>
+      <div class="row mt-5">
+        <div class="col-3">
+          <h5>受講形態</h5>
+          <p class="fs-5 border ms-3"><%= @lesson.attending_style_i18n %></p>
+        </div>
+        <div class="col-3 offset-md-1">
+          <h5>アクセス先</h5>
+          <p class="fs-5 border ms-3"><%= @lesson.access %></p>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-3">
+          <h5>カテゴリー</h5>
+          <p class="fs-5 border ms-3"><%= @lesson.category.name %></p>
+        </div>
+        <div class="col-3 offset-md-1">
+          <h5>タグ</h5>
+          <p class="fs-5 ms-3">
+            <% @lesson.tags.each do |tag| %>
+              <button class="btn btn-success"><%= tag.name %></button>
+            <% end %>
+          </p>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-2">
+          <h5>契約期間</h5>
+          <% if @lesson.contract_period==0 %>
+          <p class="fs-5 border ms-3">単発</p>
+          <% else %>
+          <p class="fs-5 border ms-3"><%= @lesson.contract_period %></p>ヶ月
+          <% end %>
+        </div>
+        <div class="col-3 offset-md-2">
+          <h5>価格</h5>
+          <div class="row">
+            <p class="fs-5 border ms-3 col-5"><%= @lesson.price %></p>
+            <p class="fs-5 col-1">円</p>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <%= link_to "編集する", edit_lesson_path(@lesson), class: "btn btn-info col-2 me-5" %>
+        <%= link_to "一覧へ戻る", lessons_path, class: "btn btn-primary col-2" %>
+      </div>
+    </div>
+  </div>
+</div>
