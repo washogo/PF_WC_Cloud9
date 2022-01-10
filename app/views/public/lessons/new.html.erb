@@ -42,7 +42,7 @@
             <%= f.select:contract_period, [ ["単発", 0], ["１ヶ月", 1], ["６ヶ月", 6], ["１年", 12] ] %>
           </div>
           <div class="col-4">
-            <%= f.label:price, "価格", class: "form-label" %>
+            <%= f.label:price, "税抜価格", class: "form-label" %>
             <%= f.number_field:price, min: 1, class: "form-control" %>
           </div>
         </div>

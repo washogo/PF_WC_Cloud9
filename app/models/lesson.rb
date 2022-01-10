@@ -5,6 +5,7 @@ class Lesson < ApplicationRecord
   has_many :tag_lists
   has_many :tags, through: :tag_lists
   has_many :evaluation_lists
+  has_many :cart_lessons
 
   enum attending_style: {online: 0, offline: 1}
 
@@ -19,8 +20,8 @@ class Lesson < ApplicationRecord
 
     new_tags.each do |new|
       new_tag=Tag.find_or_create_by(name: new)
-      byebug
       self.tags << new_tag
     end
   end
+  
 end

@@ -18,10 +18,11 @@ class Public::LessonsController < ApplicationController
 
   def show
     @lesson=Lesson.find(params[:id])
+    @cart_lesson=CartLesson.new
   end
 
   def index
-    @lessons=Lesson.all
+    @lessons=Lesson.where.not(customer_id: current_customer.id)
   end
 
   def edit

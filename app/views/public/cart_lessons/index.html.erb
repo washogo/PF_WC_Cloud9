@@ -1,0 +1,44 @@
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<div class="container">
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <%= render 'public/menue' %>
+      <h2 class="col-3 mt-5">カート画面</h2>
+      <table class="table table-hover mt-5">
+        <thead class="fs-4">
+          <tr>
+            <th>講座名</th>
+            <th>契約期間</th>
+            <th>価格</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="fs-5">
+          <% @cart_lessons.each do |cart_lesson| %>
+          <tr>
+            <td><%= cart_lesson.lesson.name %></td>
+            <td>
+              <% if cart_lesson.lesson.contract_period==0 %>
+                単発
+              <% else %>
+                <%= cart_lesson.lesson.contract_period %>ヶ月
+              <% end %>
+            </td>
+            <td><%= tax_price(cart_lesson.lesson) %>円</td>
+            <td><%= link_to "削除", cart_lesson_path(cart_lesson.id), method: :delete, class: "btn btn-danger" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-end mt-5">
+        <p class="fs-4 col-2">【数量】<%= @cart_lessons.where(customer_id: current_customer.id).count %>　点</p>
+        <p class="fs-4 col-3">【合計】<%= total_price(@cart_lessons) %> 円</p>
+      </div>
+      <div class="row mt-5 d-flex justify-content-center">
+        <%= link_to "注文画面へ", lessons_path, class: "btn btn-info col-2 me-5" %>
+        <%= link_to "講座一覧画面へ", lessons_path, class: "btn btn-primary col-2" %>
+      </div>
+    </div>
+  </div>
+</div>

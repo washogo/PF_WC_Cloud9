@@ -18,12 +18,12 @@ Rails.application.routes.draw do
     get '/current_customer/cancel', to: 'customers#cancel'
     patch '/current_customer/quit', to: 'customers#quit'
     resources :lessons, except:[:destroy]
+    resources :cart_lessons, only:[:create, :index, :destroy]
   end
 
   namespace :admin do
     root to: 'homes#top'
     resources :customers, except:[:new, :create, :destroy]
     resources :categories, except:[:new, :show]
-    
   end
 end

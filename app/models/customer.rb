@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :lessons
-  
+  has_many :cart_lessons
   
   attachment :image
   

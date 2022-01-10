@@ -1,9 +1,9 @@
-<%= render 'layouts/after_sign_in_nav', customer: current_customer %>
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
 <div class="container">
   <div class="row">
     <%= render 'layouts/sidebar' %>
     <div class="col-9 offset-md-1">
-      <%= render 'layouts/menue' %>
+      <%= render 'public/menue' %>
       <h2 class="mt-5">基本情報確認・編集画面</h2>
       <%= form_with model:@customer, url: {controller: 'customers', action: 'update' }, method: :patch, local:true do |f| %>
       <div class="row">
@@ -45,7 +45,7 @@
       <div class="row m-5">
         <%= link_to "確認完了", customer_path(current_customer), class: "btn btn-primary col-2 me-3" %>
         <%= f.submit "編集する", class: "btn btn-info col-2 me-2" %>
-        <%= link_to "退会する", current_customer_cancel, class: "btn btn-danger col-2" %>
+        <%= link_to "退会する", current_customer_cancel_path, class: "btn btn-danger col-2" %>
       </div>
       <% end %>
     </div>

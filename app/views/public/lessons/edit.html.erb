@@ -42,7 +42,7 @@
             <%= f.select:contract_period, [ ["単発", 0], ["１ヶ月", 1], ["６ヶ月", 6], ["１年", 12] ] %>
           </div>
           <div class="col-3">
-            <%= f.label:price, "価格", class: "form-label" %>
+            <%= f.label:price, "税抜価格", class: "form-label" %>
             <%= f.number_field:price, min: 1, class: "form-control" %>
           </div>
         </div>
@@ -51,8 +51,8 @@
           <%= f.radio_button:is_in_lecture, true %>開講中 <%= f.radio_button:is_in_lecture, false %>準備中
         </div>
         <div class="row mt-5">
-          <%= f.submit "編集する", class: "btn btn-primary col-3 me-2" %>
-          <%= link_to "一覧へ戻る", lessons_path, class: "btn btn-info col-3" %>
+          <%= f.submit "編集する", class: "btn btn-primary col-2 me-5" %>
+          <%= link_to "一覧へ戻る", lessons_path, class: "btn btn-info col-2" %>
         </div>
       <% end %>
     </div>

@@ -1,17 +1,18 @@
-<%= render 'layouts/after_sign_in_nav', customer: current_customer %>
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
 <div class="container">
   <div class="row">
     <%= render 'layouts/sidebar' %>
     <div class="col-9 offset-md-1">
-      <%= render 'layouts/menue' %>
+      <%= render 'public/menue' %>
       <h2 class="mt-5">振込先情報確認・編集画面</h2>
-      <%= form_with model:@customer, local:true do |f| %>
+      <%= form_with model:@customer, method: :patch, local:true do |f| %>
         <div class="col-3 mt-5">
           <%= f.text_field:transfer_target, class: "form-control" %>
         </div>
         <div class="row mt-5">
-          <%= link_to "キャンセル", root_path, class: "btn btn-info col-2 me-3" %>
-          <%= f.submit "次へ", class: "btn btn-primary col-2" %>
+          <%= link_to "キャンセル", root_path, class: "btn btn-info col-2 me-5" %>
+          <%= f.submit "変更", class: "btn btn-primary col-2 me-5" %>
+          <%= link_to "講座を作成する", new_lesson_path, class: "btn btn-success col-2" %>
         </div>
       <% end %>
     </div>

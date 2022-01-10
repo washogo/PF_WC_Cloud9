@@ -37,29 +37,36 @@
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-2">
+        <div class="col-3">
           <h5>契約期間</h5>
           <% if @lesson.contract_period==0 %>
           <p class="fs-5 border ms-3">単発</p>
           <% else %>
-          <p class="fs-5 border ms-3"><%= @lesson.contract_period %></p>ヶ月
+          <div class="row ms-3">
+            <p class="fs-5 border col-7"><%= @lesson.contract_period %></p>
+            <p class="fs-5 col-5">ヶ月</p>
+          </div>
           <% end %>
         </div>
         <div class="col-3 offset-md-2">
-          <h5>価格</h5>
-          <div class="row">
-            <p class="fs-5 border ms-3 col-5"><%= @lesson.price %></p>
+          <h5>税抜価格</h5>
+          <div class="row ms-3">
+            <p class="fs-5 border col-5"><%= @lesson.price %></p>
             <p class="fs-5 col-1">円</p>
           </div>
         </div>
       </div>
       <div class="row mt-5">
-        <% if @lesson.customer_id == current_customer %>
+        <% if @lesson.customer_id == current_customer.id %>
           <%= link_to "編集する", edit_lesson_path(@lesson), class: "btn btn-info col-2 me-5" %>
+          <%= link_to "一覧へ戻る", lessons_path, class: "btn btn-primary col-2" %>
         <% else %>
-          <%= link_to "学ぶ", 
+          <%= form_with model:@cart_lesson, url: { controller: 'cart_lessons', action: 'create' }, local:true do |f| %>
+            <%= f.hidden_field:lesson_id, :value => @lesson.id %>
+            <%= f.submit "学ぶ", class: "btn btn-info col-2 me-5" %>
+            <%= link_to "一覧へ戻る", lessons_path, class: "btn btn-primary col-2" %>
+          <% end %>
         <% end %>
-        <%= link_to "一覧へ戻る", lessons_path, class: "btn btn-primary col-2" %>
       </div>
     </div>
   </div>
