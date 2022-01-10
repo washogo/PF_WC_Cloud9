@@ -28,7 +28,7 @@
             <td><%= lesson.category.name %></td>
             <td>
               <% lesson.tags.each do |tag| %>
-                <%= tag.name %>
+                <button class="btn btn-success"><%= tag.name %></button>
               <% end %>
             </td>
             <td><%= lesson.attending_style_i18n %></td>

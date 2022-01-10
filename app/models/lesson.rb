@@ -19,6 +19,7 @@ class Lesson < ApplicationRecord
 
     new_tags.each do |new|
       new_tag=Tag.find_or_create_by(name: new)
+      byebug
       self.tags << new_tag
     end
   end

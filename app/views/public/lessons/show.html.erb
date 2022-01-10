@@ -8,7 +8,7 @@
       <div class="row mt-5">
         <h5 class="col-2">評価平均</h4>
       </div>
-      <div class="col-3 mt-5">
+      <div class="col-6 mt-5">
         <h5>内容</h5>
         <p class="fs-5 border ms-3"><%= @lesson.content %></p>
       </div>
@@ -17,7 +17,7 @@
           <h5>受講形態</h5>
           <p class="fs-5 border ms-3"><%= @lesson.attending_style_i18n %></p>
         </div>
-        <div class="col-3 offset-md-1">
+        <div class="col-6 offset-md-1">
           <h5>アクセス先</h5>
           <p class="fs-5 border ms-3"><%= @lesson.access %></p>
         </div>
@@ -27,7 +27,7 @@
           <h5>カテゴリー</h5>
           <p class="fs-5 border ms-3"><%= @lesson.category.name %></p>
         </div>
-        <div class="col-3 offset-md-1">
+        <div class="col-6 offset-md-1">
           <h5>タグ</h5>
           <p class="fs-5 ms-3">
             <% @lesson.tags.each do |tag| %>
@@ -54,7 +54,11 @@
         </div>
       </div>
       <div class="row mt-5">
-        <%= link_to "編集する", edit_lesson_path(@lesson), class: "btn btn-info col-2 me-5" %>
+        <% if @lesson.customer_id == current_customer %>
+          <%= link_to "編集する", edit_lesson_path(@lesson), class: "btn btn-info col-2 me-5" %>
+        <% else %>
+          <%= link_to "学ぶ", 
+        <% end %>
         <%= link_to "一覧へ戻る", lessons_path, class: "btn btn-primary col-2" %>
       </div>
     </div>

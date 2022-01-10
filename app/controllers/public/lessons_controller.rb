@@ -21,13 +21,20 @@ class Public::LessonsController < ApplicationController
   end
 
   def index
-    @lessons = Lesson.all
+    @lessons=Lesson.all
   end
 
   def edit
+    @lesson=Lesson.find(params[:id])
+    @categories=Category.all
   end
 
   def update
+    @lesson=Lesson.find(params[:id])
+    tag_list=params[:lesson][:tags][:name].split(',')
+    @lesson.save(lesson_params)
+    @lesson.save_tag(tag_list)
+    redirect_to lesson_path(@lesson)
   end
 
   private
