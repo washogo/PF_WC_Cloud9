@@ -9,7 +9,7 @@
         <thead>
           <tr>
             <th>講座名</th>
-            <th>開始日</th>
+            <th>購入日</th>
             <th>更新日</th>
             <th>進捗</th>
           </tr>
@@ -23,7 +23,13 @@
               <% end %>
             </td>
             <td><%= l have_lesson.created_at %></td>
-            <td><%= l update_at_date(have_lesson.updated_at, have_lesson.lesson.contract_period) %></td>
+            <td>
+              <% if have_lesson.lesson.contract_period == 0 %>
+                単発のため更新なし
+              <% else %>
+                <%= l update_at_date(have_lesson.updated_at, have_lesson.lesson.contract_period) %>
+              <% end %>
+            </td>
             <td><%= have_lesson.progress %>％</td>
           </tr>
         <% end %>
