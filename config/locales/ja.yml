@@ -8,6 +8,11 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         bank_transfer: "銀行振込"
+    have_lesson:
+      is_in_study:
+        not_started: "未学習"
+        in_study: "学習中"
+        learned: "学習済み"
 
   time:
     formats:

@@ -4,17 +4,17 @@
     <%= render 'layouts/sidebar' %>
     <div class="col-9 offset-md-1">
       <%= render 'public/menue' %>
-      <h2 class="mt-5">学び一覧</h2>
+      <h2 class="mt-5">学び一覧画面</h2>
       <table class="table table-hover mt-5">
-        <thead>
+        <thead class="fs-4">
           <tr>
             <th>講座名</th>
             <th>購入日</th>
             <th>更新日</th>
-            <th>進捗</th>
+            <th>進捗状況</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="fs-5">
         <% @have_lessons.each do |have_lesson| %>
           <tr>
             <td>
@@ -30,7 +30,16 @@
                 <%= l update_at_date(have_lesson.updated_at, have_lesson.lesson.contract_period) %>
               <% end %>
             </td>
-            <td><%= have_lesson.progress %>％</td>
+            <td>
+              <% case have_lesson.is_in_study %>
+              <% when "not_started" %>
+                <button class="btn btn-secondary"><%= have_lesson.is_in_study_i18n %></button>
+              <% when "in_study" %>
+                <button class="btn btn-success"><%= have_lesson.is_in_study_i18n %></button>
+              <% when "learned" %>
+                <button class="btn btn-info"><%= have_lesson.is_in_study_i18n %></button>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>
