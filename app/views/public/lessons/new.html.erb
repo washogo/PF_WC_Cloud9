@@ -38,8 +38,8 @@
         </div>
         <div class="row mt-5">
           <div class="col-3">
-            <%= f.label:contract_period, "契約期間", class: "form-label" %></br>
-            <%= f.select:contract_period, [ ["単発", 0], ["１ヶ月", 1], ["６ヶ月", 6], ["１年", 12] ] %>
+            <%= f.label:contract_period, "契約期間(１ヶ月は３０日とします)", class: "form-label" %></br>
+            <%= f.select:contract_period, [ ["単発", 0], ["１ヶ月", 1], ["６ヶ月", 6], ["１２ヶ月", 12] ] %>
           </div>
           <div class="col-4">
             <%= f.label:price, "税抜価格", class: "form-label" %>

@@ -12,14 +12,19 @@
             <th>開始日</th>
             <th>更新日</th>
             <th>進捗</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
         <% @have_lessons.each do |have_lesson| %>
           <tr>
-            <td><%= have_lesson.lesson.name %></td>
+            <td>
+              <%= link_to have_lesson_path(have_lesson.id), class: "link-dark" do %>
+                <%= have_lesson.lesson.name %>
+              <% end %>
+            </td>
             <td><%= l have_lesson.created_at %></td>
+            <td><%= l update_at_date(have_lesson.updated_at, have_lesson.lesson.contract_period) %></td>
+            <td><%= have_lesson.progress %>％</td>
           </tr>
         <% end %>
         </tbody>
