@@ -6,6 +6,8 @@ class Lesson < ApplicationRecord
   has_many :tags, through: :tag_lists
   has_many :evaluation_lists
   has_many :cart_lessons
+  has_many :order_details
+  has_many :have_lessons
 
   enum attending_style: { online: 0, offline: 1 }
 
