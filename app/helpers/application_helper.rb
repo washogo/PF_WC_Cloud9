@@ -11,4 +11,13 @@ module ApplicationHelper
     tax_price=lesson.price * 1.1
     "#{tax_price.to_i}"
   end
+  
+  def contract_period(period)
+    if period==0
+      "単発"
+    else
+      "#{period}ヶ月"
+    end
+  end
+  
 end

@@ -32,5 +32,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :customers, except:[:new, :create, :destroy]
     resources :categories, except:[:new, :show]
+    resources :lessons, except:[:new, :create, :edit, :update]
   end
 end

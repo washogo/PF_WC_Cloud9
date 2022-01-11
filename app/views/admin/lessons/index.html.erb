@@ -1,0 +1,55 @@
+<%= render 'admin/after_sign_in_nav' %>
+<div class="container">
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <h2 class="mt-5">講座一覧</h2>
+      <table class="table table-hover table-sm">
+        <thead>
+          <tr>
+            <th>講座名</th>
+            <th>アクセス</th>
+            <th>契約期間</th>
+            <th>税抜価格</th>
+            <th>開講状況</th>
+            <th>最終更新日</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @lessons.each do |lesson| %>
+          <tr>
+            <td>
+              <%= link_to admin_lesson_path(lesson.id), class: "link-dark" do %>
+                <%= lesson.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= lesson.attending_style_i18n %>　<%= lesson.access %>
+            </td>
+            <td>
+              <%= contract_period(lesson.contract_period) %>
+            </td>
+            <td>
+              <%= lesson.price %>円
+            </td>
+            <td>
+            <% if lesson.is_in_lecture %>
+              開講中
+            <% else %>
+              閉講
+            <% end %>
+            </td>
+            <td>
+              <%= l lesson.updated_at %>
+            </td>
+            <td>
+              <%= link_to "削除", "/admin/lessons/#{lesson.id}", method: :delete, class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

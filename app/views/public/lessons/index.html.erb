@@ -33,11 +33,7 @@
             </td>
             <td><%= lesson.attending_style_i18n %></td>
             <td>
-              <% if lesson.contract_period==0 %>
-                単発
-              <% else %>
-                <%= lesson.contract_period %>ヶ月
-              <% end %>
+              <%= contract_period(lesson.contract_period) %>
             </td>
             <td><%= lesson.price %>円</td>
             <td>
