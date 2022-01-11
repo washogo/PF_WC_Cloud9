@@ -1,0 +1,63 @@
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<div class="container">
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <%= render 'public/menue' %>
+      <h2 class="mt-5">注文情報確認画面</h2>
+      <table class="table table mt-5">
+        <thead class="fs-4">
+          <tr>
+            <th>講座名</th>
+            <th>契約期間</th>
+            <th>税込価格（税抜価格）</th>
+          </tr>
+        </thead>
+        <tbody class="fs-5">
+          <% @cart_lessons.each do |cart_lesson| %>
+          <tr>
+            <td><%= cart_lesson.lesson.name %></td>
+            <td>
+              <% if cart_lesson.lesson.contract_period==0 %>
+                単発
+              <% else %>
+                <%= cart_lesson.lesson.contract_period %>ヶ月
+              <% end %>
+              </td>
+            <td><%= tax_price(cart_lesson.lesson) %>円（<%= cart_lesson.lesson.price %>円）</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-end mt-5">
+        <p class="fs-4 col-2">【数量】<%= @cart_lessons.where(customer_id: current_customer.id).count %>点</p>
+        <p class="fs-4 col-3">【送料】500円</p>
+        <p class="fs-4 col-3">
+          <% sum=total_price(@cart_lessons).to_i + 500 %>
+          【合計】<%= sum.to_s %>円
+        </p>
+      </div>
+      <div class="row mt-5">
+        <div class="col-5">
+          <h4>【配送先】</h4>
+          <div class="fs-5 ms-4">
+            <%= @order.address.name %></br>
+            〒<%= @order.address.postal_code %> <%= @order.address.address %>
+          </div>
+        </div>
+        <div class="col-5">
+          <h4>【支払方法】</h4>
+          <p class="fs-5 ms-4"><%= @order.payment_method_i18n %></p>
+        </div>
+      </div>
+      <%= form_with model:@order, url: { controller: 'orders', action: 'create' }, local:true do |f| %>
+        <%= f.hidden_field:shipping_fee, :value => shipping_fee %>
+        <%= f.hidden_field:total_price, :value => total_price(@cart_lessons).to_i + shipping_fee %>
+        <%= f.hidden_field:address_id, :value => @order.address.id %>
+        <div class="col mt-5 offset-md-4">
+          <%= f.submit "注文する", class: "btn btn-info btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

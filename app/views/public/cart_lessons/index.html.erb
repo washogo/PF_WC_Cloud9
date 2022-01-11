@@ -36,7 +36,7 @@
         <p class="fs-4 col-3">【合計】<%= total_price(@cart_lessons) %> 円</p>
       </div>
       <div class="row mt-5 d-flex justify-content-center">
-        <%= link_to "注文画面へ", lessons_path, class: "btn btn-info col-2 me-5" %>
+        <%= link_to "注文画面へ", new_order_path, class: "btn btn-info col-2 me-5" %>
         <%= link_to "講座一覧画面へ", lessons_path, class: "btn btn-primary col-2" %>
       </div>
     </div>

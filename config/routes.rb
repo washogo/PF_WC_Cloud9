@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     patch '/current_customer/quit', to: 'customers#quit'
     resources :lessons, except:[:destroy]
     resources :cart_lessons, only:[:create, :index, :destroy]
+    resources :orders, only:[:new]
+    post '/orders/confirmation', to: 'orders#confirmation'
+    get '/orders/completed', to: 'orders#completed'
+    post '/orders/completed', to: 'orders#create'
+    resources :addresses, except:[:new, :show]
   end
 
   namespace :admin do

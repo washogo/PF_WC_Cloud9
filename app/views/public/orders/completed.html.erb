@@ -1,0 +1,16 @@
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<div class="container">
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <%= render 'public/menue' %>
+      <div class="alert alert-info col-6 mt-5">
+        <h2 class="alert-heading">注文ありがとうございました！</h2>
+        <p>
+          生徒として先生としての活躍を楽しみにしております。</br>
+          引き続き当サイトをご活用ください。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@ class Lesson < ApplicationRecord
   has_many :evaluation_lists
   has_many :cart_lessons
 
-  enum attending_style: {online: 0, offline: 1}
+  enum attending_style: { online: 0, offline: 1 }
 
   def save_tag(made_tags)
     current_tags=self.tags.pluck(:name) unless self.tags.nil?
