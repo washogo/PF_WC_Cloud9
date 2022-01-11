@@ -3,6 +3,7 @@ class Public::HaveLessonsController < ApplicationController
 
   def index
     @have_lessons=HaveLesson.where(customer_id: current_customer)
+    @evaluation=Evaluation.new
   end
 
   def show
@@ -17,7 +18,7 @@ class Public::HaveLessonsController < ApplicationController
   end
 
   private
-  
+
   def have_lesson_params
     params.require(:have_lesson).permit(:progress, :is_in_study)
   end

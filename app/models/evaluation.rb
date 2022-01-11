@@ -1,3 +1,4 @@
 class Evaluation < ApplicationRecord
-  has_many :evaluation_lists
+  belongs_to :customer
+  belongs_to :lesson
 end

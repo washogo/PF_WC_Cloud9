@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EvaluationListTest < ActiveSupport::TestCase
+class Public::EvaluationsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     post '/orders/completed', to: 'orders#create'
     resources :addresses, except:[:new, :show]
     resources :have_lessons, only:[:index, :show, :update]
+    resources :evaluations, only:[:new, :create]
   end
 
   namespace :admin do

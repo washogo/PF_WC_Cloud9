@@ -1,0 +1,22 @@
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<div class="container">
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <%= render 'public/menue' %>
+      <h2 class="mt-5">評価作成</h2>
+      <%= form_with model:@evaluation, local:true do |f| %>
+      <div class="col-3 fs-5 mt-5">
+        <%= f.label:evaluation, "評価度", class: "form-label" %>
+        <%= f.select:evaluation, [["⭐️", 1], ["⭐️⭐️", 2], ["⭐️⭐⭐️", 3],["⭐️⭐⭐️⭐", 4], ["⭐️⭐⭐️⭐⭐️", 5]], prompt: "選択してください" %>
+      </div>
+      <div class="col-9 fs-5 mt-5">
+        <%= f.label:review, "レビュー", class: "form-label" %>
+        <%= f.text_area:review, class: "form-control" %>
+      </div>
+      <%= f.hidden_field:lesson_id, :value => params[:evaluation][:lesson_id] %>
+      <%= f.submit "評価する", class: "btn btn-warning btn-lg mt-5 " %>
+      <% end %>
+    </div>
+  </div>
+</div>

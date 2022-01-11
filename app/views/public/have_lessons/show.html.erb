@@ -6,6 +6,20 @@
       <%= render 'public/menue' %>
       <h2 class="mt-5">学び詳細画面</h2>
       <h3 class="col-3 mt-5">【<%= @have_lesson.lesson.name %>】</h3>
+      <%= form_with model:@have_lesson, method: :patch, local:true do |f| %>
+      <div class="row mt-5">
+        <div class="col-4">
+          <%= f.label:progress, "進捗状況", class: "form-label fs-4" %>
+          <%= f.number_field:progress, min: 1, max: 100, class: "form-control fs-5" %>
+        </div>
+        <div class="col-1 mt-5 fs-5">
+          <%= f.select:is_in_study,[["未学習", "not_started"], ["学習中", "in_study"], ["学習済み", "learned"]] %>
+        </div>
+        <div class="col-2 mt-5 ms-5">
+          <%= f.submit "変更する", class: "btn btn-primary" %>
+        </div>
+      </div>
+      <% end %>
       <div class="row mt-5">
         <div class="col-4">
           <h4>内容</h4>
@@ -41,20 +55,6 @@
         </div>
       </div>
       <div class="row"></div>
-      <%= form_with model:@have_lesson, method: :patch, local:true do |f| %>
-      <div class="row mt-5">
-        <div class="col-4">
-          <%= f.label:progress, "進捗状況", class: "form-label fs-4" %>
-          <%= f.number_field:progress, min: 1, max: 100, class: "form-control fs-5" %>
-        </div>
-        <div class="col-1 mt-5 fs-5">
-          <%= f.select:is_in_study,[["未学習", "not_started"], ["学習中", "in_study"], ["学習済み", "learned"]] %>
-        </div>
-        <div class="col-2 mt-5 ms-5">
-          <%= f.submit "変更する", class: "btn btn-primary" %>
-        </div>
-      </div>
-      <% end %>
       <div class="row mt-5 offset-md-3">
         <div class="col-2">
         <%= form_with model:@cart_lesson, local:true do |f| %>
