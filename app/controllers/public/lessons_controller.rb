@@ -19,6 +19,7 @@ class Public::LessonsController < ApplicationController
   def show
     @lesson=Lesson.find(params[:id])
     @cart_lesson=CartLesson.new
+    @evaluations=Evaluation.where(lesson_id: @lesson.id)
   end
 
   def index

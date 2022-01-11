@@ -42,7 +42,7 @@
               <% end %>
             </td>
             <td>
-              <%= form_with model:@evaluation, url: { controller: 'evaluations', action: 'new' }, method: :get, local:true do |f| %>
+              <%= form_with url: new_evaluation_path, method: :get, local:true do |f| %>
                 <%= f.hidden_field:lesson_id, :value => have_lesson.lesson.id %>
                 <%= f.submit "評価する", class: "btn btn-warning" %>
               <% end %>

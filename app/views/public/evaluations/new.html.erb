@@ -14,8 +14,8 @@
         <%= f.label:review, "レビュー", class: "form-label" %>
         <%= f.text_area:review, class: "form-control" %>
       </div>
-      <%= f.hidden_field:lesson_id, :value => params[:evaluation][:lesson_id] %>
-      <%= f.submit "評価する", class: "btn btn-warning btn-lg mt-5 " %>
+        <%= f.hidden_field:lesson_id, :value => params[:lesson_id] %>
+        <%= f.submit "評価する", class: "btn btn-warning btn-lg mt-5 " %>
       <% end %>
     </div>
   </div>

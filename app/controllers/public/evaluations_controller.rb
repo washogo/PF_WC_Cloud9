@@ -13,6 +13,14 @@ class Public::EvaluationsController < ApplicationController
     redirect_to have_lessons_path
   end
 
+  def show
+    @evaluation=Evaluation.find(params[:id])
+  end
+
+  def index
+    @evaluations=Evaluation.where(lesson_id: params[:lesson_id])
+  end
+
   private
 
   def evaluation_params

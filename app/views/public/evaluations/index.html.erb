@@ -1,0 +1,40 @@
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<div class="container">
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <%= render 'public/menue' %>
+      <h2 class="mt-5">評価一覧</h2>
+      <table class="table table-hover">
+        <thead class="fs-4">
+          <tr>
+            <th>講座名</th>
+            <th>契約期間</th>
+            <th>税抜価格</th>
+            <th>評価</th>
+          </tr>
+        </thead>
+        <tbody class="fs-5">
+          <% @evaluations.each do |evaluation| %>
+          <tr>
+            <td><%= evaluation.lesson.name %></td>
+            <td>
+              <% if evaluation.lesson.contract_period == 0 %>
+                単発
+              <% else %>
+                <%= evaluation.lesson.contract_period %>ヶ月
+              <% end %>
+            </td>
+            <td><%= evaluation.lesson.price %>円</td>
+            <td>
+              <%= link_to evaluation_path(evaluation.id), class: "link-light" do %>
+                <%= evaluation.evaluation_i18n %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

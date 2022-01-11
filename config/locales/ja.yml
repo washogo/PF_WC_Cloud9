@@ -13,6 +13,13 @@ ja:
         not_started: "未学習"
         in_study: "学習中"
         learned: "学習済み"
+    evaluation:
+      evaluation:
+        1: "⭐️"
+        2: "⭐️⭐️"
+        3: "⭐️⭐⭐️"
+        4: "⭐️⭐⭐️⭐"
+        5: "⭐️⭐⭐️⭐⭐️"
 
   time:
     formats:
