@@ -34,5 +34,6 @@ Rails.application.routes.draw do
     resources :categories, except:[:new, :show]
     resources :lessons, except:[:new, :create, :edit, :update]
     resources :tags, only:[:index, :destroy]
+    resources :evaluations, only:[:show, :index]
   end
 end

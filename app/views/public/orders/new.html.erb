@@ -6,38 +6,32 @@
       <%= render 'public/menue' %>
       <h2 class="mt-5">注文情報入力画面</h2>
       <%= form_with model:@order, url: { controller: 'orders', action: 'confirmation' }, local:true do |f| %>
-      <div class="row mt-5">
-        <div class="col-5">
-          <h3>配送先</h3>
-          <% if @addresses.blank? %>
-            <%= link_to "配送先を登録する", addresses_path, class: "btn btn-warning m-5" %>
-          <% else %>
-            <% @addresses.each do |address| %>
-              <div class="row mt-5">
-                <div class="col-1">
-                  <%=f.radio_button:address_id, address.id, class: "form-check-input" %>
-                </div>
-                <p class="col-11 fs-5">
-                  <%= address.name %></br>
-                  〒<%= address.postal_code %>　<%= address.address %>
-                </p>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="col-3 offset-md-1 fs-5">
-          <h3>支払方法</h3>
-          <div class="mt-5">
-            <%= f.radio_button:payment_method, "credit_card", class: "form-check-input" %>
-            <%= f.label:payment_method, "クレジットカード", class: "form-check-label" %>
+      <h3 class="mt-5">配送先</h3>
+      <% if @addresses.blank? %>
+        <%= link_to "配送先を登録する", addresses_path, class: "btn btn-warning m-5" %>
+      <% else %>
+        <% @addresses.each do |address| %>
+          <div class="row mt-5">
+            <div class="col-1">
+              <%=f.radio_button:address_id, address.id, class: "form-check-input" %>
+            </div>
+            <p class="col-11 fs-5">
+              <%= address.name %></br>
+              〒<%= address.postal_code %>　<%= address.address %>
+            </p>
           </div>
-          <div class="mt-5">
-            <%= f.radio_button:payment_method, "bank_transfer", class: "form-check-input" %>
-            <%= f.label:payment_method, "銀行振込", class: "form-check-label" %>
-          </div>
-        </div>
+        <% end %>
+      <% end %>
+      <h3 class="mt-5">支払方法</h3>
+      <div class="mt-5">
+        <%= f.radio_button:payment_method, "credit_card", class: "form-check-input" %>
+        <%= f.label:payment_method, "クレジットカード", class: "form-check-label" %>
       </div>
-      <div class="row mt-5 me-5 d-flex justify-content-end">
+      <div class="mt-5">
+        <%= f.radio_button:payment_method, "bank_transfer", class: "form-check-input" %>
+        <%= f.label:payment_method, "銀行振込", class: "form-check-label" %>
+      </div>
+      <div class="row mt-5">
         <%= f.submit "注文確認画面へ", class: "btn btn-info col-2 me-3" %>
         <%= link_to "カートに戻る", cart_lessons_path, class: "btn btn-primary col-2" %>
       </div>

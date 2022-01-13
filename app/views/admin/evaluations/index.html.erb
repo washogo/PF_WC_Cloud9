@@ -1,9 +1,8 @@
-<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<%= render 'admin/after_sign_in_nav' %>
 <div class="container">
   <div class="row">
     <%= render 'layouts/sidebar' %>
     <div class="col-9 offset-md-1">
-      <%= render 'public/menue' %>
       <h2 class="mt-5">評価一覧</h2>
       <table class="table table-hover">
         <thead class="fs-4">
@@ -18,9 +17,9 @@
           <% @evaluations.each do |evaluation| %>
           <tr>
             <td>
-              <%= link_to lesson_path(evaluation.lesson.id), class: "link-dark" do %>
-                <%= evaluation.lesson.name %>
-              <% end %>
+            <%= link_to admin_lesson_path(evaluation.lesson.id), class: "link-dark" do %>
+              <%= evaluation.lesson.name %>
+            <% end %>
             </td>
             <td>
               <% if evaluation.lesson.contract_period == 0 %>
@@ -31,7 +30,7 @@
             </td>
             <td><%= evaluation.lesson.price %>円</td>
             <td>
-              <%= link_to evaluation_path(evaluation.id), class: "link-light" do %>
+              <%= link_to admin_evaluation_path(evaluation.id), class: "link-light" do %>
                 <%= evaluation.evaluation_i18n %>
               <% end %>
             </td>
