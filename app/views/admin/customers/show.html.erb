@@ -12,8 +12,6 @@
           <p class="fs-4 mt-3">電話番号：</p>
           <p class="fs-4 mt-3">メールアドレス：</p>
           <p class="fs-4 mt-3">振込先：</p>
-          <p class="fs-4 mt-3">学び中：</p>
-          <p class="fs-4 mt-3">教え中：</p>
           <p class="fs-4 mt-3">会員ステータス：</p>
         </div>
         <div class="col-6">
@@ -23,8 +21,6 @@
           <p class="fs-4 mt-3"><%= @customer.phone_number %></p>
           <p class="fs-4 mt-3"><%= @customer.email %></p>
           <p class="fs-4 mt-3"><%= @customer.transfer_target %></p>
-          <p class="fs-4 mt-3">""</p>
-          <p class="fs-4 mt-3">""</p>
           <% if @customer.is_deleted %>
             <button class="btn btn-success">有効</button>
           <% else %>
@@ -32,9 +28,69 @@
           <% end %>
         </div>
       </div>
-      <div class="row">
-         <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-primary col-2 me-2" %> 
-         <%= link_to "一覧に戻る", admin_customers_path, class: "btn btn-info col-2" %> 
+      <div class="col mt-5">
+        <h4>学び中</h4>
+        <table class="table table-hover">
+          <thead class="fs-5">
+            <tr>
+              <th>講座名</th>
+              <th>進捗状況</th>
+              <th>受講状況</th>
+              <th>更新日</th>
+            </tr>
+          </thead>
+          <tbody class="fs-5">
+            <% @have_lessons.each do |have_lesson| %>
+            <tr>
+              <td>
+              <%= link_to have_lesson_path(have_lesson.id), class: "link-dark" do %>
+                <%= have_lesson.lesson.name %>
+              <% end %>
+              </td>
+              <td><%= have_lesson.progress %>％</td>
+              <td><%= have_lesson.is_in_study_i18n %></td>
+              <td>
+                <% if have_lesson.lesson.contract_period == 0 %>
+                  単発のため更新なし
+                <% else %>
+                  <%= l update_at_date(have_lesson.updated_at, have_lesson.lesson.contract_period) %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col mt-5">
+        <h4>教え中</h4>
+        <table class="table table-hover">
+          <thead class="fs-5">
+            <tr>
+              <th>講座名</th>
+              <th>作成日</th>
+              <th>更新日</th>
+              <th>開講状況</th>
+            </tr>
+          </thead>
+          <tbody class="fs-5">
+            <% @lessons.each do |lesson| %>
+            <tr>
+              <td>
+              <%= link_to lesson_path(lesson.id), class: "link-dark" do %>
+                <%= lesson.name %>
+              <% end %>
+              </td>
+              <td><%= l lesson.created_at %></td>
+              <td><%= l lesson.updated_at %></td>
+              <td><%= is_in_lecture(lesson.is_in_lecture) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="row mt-5">
+         <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-primary col-2 me-2" %>
+         <%= link_to "一覧に戻る", admin_customers_path, class: "btn btn-info col-2" %>
       </div>
     </div>
   </div>

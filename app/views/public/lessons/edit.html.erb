@@ -22,8 +22,13 @@
         </div>
         <div class="col-9 mt-5">
           <%= f.fields_for:tags do |tag| %>
-            <%= f.label:name, "タグ（カンマ , で区切って入力してください）", class: "form-label" %></br>
-            <%= tag.text_field:name %>
+            <%= tag.label:name, "タグ（カンマ , で区切って入力してください）", class: "form-label" %></br>
+            <p>
+              <% @lesson.tag_lists.each do |tag_list| %>
+                <button class="btn btn-success"><%= tag_list.tag.name %></button>
+              <% end %>
+            </p>
+            <%= tag.text_field:name, class: "form-control" %>
           <% end %>
         </div>
         <div class="row mt-5">
@@ -51,8 +56,9 @@
           <%= f.radio_button:is_in_lecture, true %>開講中 <%= f.radio_button:is_in_lecture, false %>準備中
         </div>
         <div class="row mt-5">
-          <%= f.submit "編集する", class: "btn btn-primary col-2 me-5" %>
-          <%= link_to "一覧へ戻る", lessons_path, class: "btn btn-info col-2" %>
+          <%= f.submit "変更する", class: "btn btn-primary col-2 me-5" %>
+          <%= link_to "削除する", "/lessons/#{@lesson.id}", method: :delete, class: "btn btn-danger col-2 me-5" %>
+          <%= link_to "マイページに戻る", customer_path(current_customer.id), class: "btn btn-info col-2" %>
         </div>
       <% end %>
     </div>

@@ -24,28 +24,12 @@
                 <%= lesson.name %>
               <% end %>
             </td>
-            <td>
-              <%= lesson.attending_style_i18n %>　<%= lesson.access %>
-            </td>
-            <td>
-              <%= contract_period(lesson.contract_period) %>
-            </td>
-            <td>
-              <%= lesson.price %>円
-            </td>
-            <td>
-            <% if lesson.is_in_lecture %>
-              開講中
-            <% else %>
-              閉講
-            <% end %>
-            </td>
-            <td>
-              <%= l lesson.updated_at %>
-            </td>
-            <td>
-              <%= link_to "削除", "/admin/lessons/#{lesson.id}", method: :delete, class: "btn btn-danger btn-sm" %>
-            </td>
+            <td><%= lesson.attending_style_i18n %>　<%= lesson.access %></td>
+            <td><%= contract_period(lesson.contract_period) %></td>
+            <td><%= lesson.price %>円</td>
+            <td><%= is_in_lecture(lesson.is_in_lecture) %></td>
+            <td><%= l lesson.updated_at %></td>
+            <td><%= link_to "削除", "/admin/lessons/#{lesson.id}", method: :delete, class: "btn btn-danger btn-sm" %></td>
           </tr>
           <% end %>
         </tbody>

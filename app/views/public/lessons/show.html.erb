@@ -4,9 +4,21 @@
     <%= render 'layouts/sidebar' %>
     <div class="col-9 offset-md-1">
       <%= render 'public/menue' %>
-      <h2 class="col-3 mt-5">【<%= @lesson.name %>】</h2>
+      <h2 class="col mt-5">【<%= @lesson.name %>】</h2>
       <div class="row mt-5">
-        <h5 class="col-2">評価平均</h4>
+        <h5 class="col-2">先生名</h5>
+        <p class="col-3 fs-5 border">
+        <%= link_to customer_path(@lesson.customer_id), class: "link-dark" do %>
+          <%= @lesson.customer.nickname %>
+        <% end %>
+        </p>
+      </div>
+      <div class="row mt-5">
+        <h5 class="col-2">開講状況</h5>
+        <button class="btn btn-secondary col-2"><%= is_in_lecture(@lesson.is_in_lecture) %></button>
+      </div>
+      <div class="row mt-5">
+        <h5 class="col-2">評価平均</h5>
         <% if @evaluations.present? %>
           <div class="col-2">
           <%= form_with url: evaluations_path, method: :get, local:true do |f| %>
@@ -68,8 +80,8 @@
       </div>
       <div class="row mt-5">
         <% if @lesson.customer_id == current_customer.id %>
-          <%= link_to "編集する", edit_lesson_path(@lesson), class: "btn btn-info col-2 me-5" %>
-          <%= link_to "一覧へ戻る", lessons_path, class: "btn btn-primary col-2" %>
+          <%= link_to "編集する", edit_lesson_path(@lesson.id), class: "btn btn-info col-2 me-5" %>
+          <%= link_to "一覧へ戻る", customer_path(current_customer.id), class: "btn btn-primary col-2" %>
         <% else %>
           <%= form_with model:@cart_lesson, url: { controller: 'cart_lessons', action: 'create' }, local:true do |f| %>
             <%= f.hidden_field:lesson_id, :value => @lesson.id %>

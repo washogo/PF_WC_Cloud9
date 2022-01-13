@@ -1,11 +1,18 @@
-<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<%= render 'admin/after_sign_in_nav' %>
 <div class="container">
   <div class="row">
     <%= render 'layouts/sidebar' %>
     <div class="col-9 offset-md-1">
-      <%= render 'public/menue' %>
       <h2 class="mt-5">講座詳細画面</h2>
-      <h2 class="col-3 mt-5">【<%= @lesson.name %>】</h2>
+      <h2 class="col mt-5">【<%= @lesson.name %>】</h2>
+      <div class="row mt-5">
+        <h5 class="col-2">会員名</h5>
+        <p class="col-3 fs-5 border">
+        <%= link_to admin_customer_path(@lesson.customer_id), class: "link-dark" do %>
+          <%= @lesson.customer.nickname %>
+        <% end %>
+        </p>
+      </div>
       <div class="row mt-5">
         <h5 class="col-2">評価平均</h4>
         <% if @evaluations.present? %>
@@ -18,6 +25,10 @@
         <% else %>
           <p class="col-2 fs-5 border">評価なし</p>
         <% end %>
+      </div>
+      <div class="row mt-5">
+        <h5 class="col-2">受講者数</h5>
+        <p class="col-2 fs-5 border"><%= HaveLesson.where(lesson_id: @lesson.id).count %>人</p>
       </div>
       <div class="col-6 mt-5">
         <h5>内容</h5>

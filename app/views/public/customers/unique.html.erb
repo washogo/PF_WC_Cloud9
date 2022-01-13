@@ -4,7 +4,7 @@
     <%= render 'layouts/sidebar' %>
     <div class="col-9 offset-md-1">
       <%= render 'public/menue' %>
-      <h2 class="mt-5">プロフィール追加・編集画面</h2>
+      <h2 class="mt-5">プロフィール登録・編集画面</h2>
       <%= form_with model:@customer, method: :patch, url: current_customer_path, local:true do |f| %>
         <div class="col-3 mt-5">
           <%= f.label :nickname, "ニックネーム", class: "form-label" %>
@@ -18,7 +18,10 @@
           <%= f.label :image, "プロフィール画像", class: "form-label" %>
           <%= f.attachment_field :image, class: "form-control" %>
         </div>
-        <%= f.submit "登録する", class: "btn btn-info mt-5" %>
+        <div class="row mt-5">
+          <%= f.submit "登録する", class: "btn btn-info col-2 me-3" %>
+          <%= f.submit "変更する", class: "btn btn-primary col-2" %>
+        </div>
       <% end %>
 
     </div>

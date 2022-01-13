@@ -9,16 +9,20 @@
       <div class="row mt-5">
         <div class="col-5">
           <h3>配送先</h3>
-          <% @addresses.each do |address| %>
-            <div class="row mt-5">
-              <div class="col-1">
-                <%=f.radio_button:address_id, address.id, class: "form-check-input" %>
+          <% if @addresses.blank? %>
+            <%= link_to "配送先を登録する", addresses_path, class: "btn btn-warning m-5" %>
+          <% else %>
+            <% @addresses.each do |address| %>
+              <div class="row mt-5">
+                <div class="col-1">
+                  <%=f.radio_button:address_id, address.id, class: "form-check-input" %>
+                </div>
+                <p class="col-11 fs-5">
+                  <%= address.name %></br>
+                  〒<%= address.postal_code %>　<%= address.address %>
+                </p>
               </div>
-              <p class="col-11 fs-5">
-                <%= address.name %></br>
-                〒<%= address.postal_code %>　<%= address.address %>
-              </p>
-            </div>
+            <% end %>
           <% end %>
         </div>
         <div class="col-3 offset-md-1 fs-5">

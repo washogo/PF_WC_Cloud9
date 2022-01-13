@@ -1,11 +1,14 @@
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
+
   def index
     @customers=Customer.all
   end
 
   def show
     @customer=Customer.find(params[:id])
+    @have_lessons=HaveLesson.where(customer_id: @customer.id)
+    @lessons=Lesson.where(customer_id: @customer.id)
   end
 
   def edit

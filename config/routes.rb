@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     patch '/current_customer', to: 'customers#update'
     get '/current_customer/cancel', to: 'customers#cancel'
     patch '/current_customer/quit', to: 'customers#quit'
-    resources :lessons, except:[:destroy]
+    resources :lessons
     resources :cart_lessons, only:[:create, :index, :destroy]
     resources :orders, only:[:new]
     post '/orders/confirmation', to: 'orders#confirmation'
@@ -33,5 +33,6 @@ Rails.application.routes.draw do
     resources :customers, except:[:new, :create, :destroy]
     resources :categories, except:[:new, :show]
     resources :lessons, except:[:new, :create, :edit, :update]
+    resources :tags, only:[:index, :destroy]
   end
 end
