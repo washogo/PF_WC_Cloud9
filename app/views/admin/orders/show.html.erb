@@ -1,0 +1,65 @@
+<%= render 'admin/after_sign_in_nav' %>
+<div class="container">
+  <div class="row mt-5">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <h2>注文履歴詳細画面</h2>
+      <div class="row mt-5">
+        <h5 class="col-2">【会員名】</h5>
+        <p class="col-3 fs-5 border"><%= @order.customer.full_name %></p>
+        <h5 class="col-2 ms-5">【フリガナ】</h5>
+        <p class="col-3 fs-5 border"><%= @order.customer.full_name_kana %></p>
+      </div>
+      <table class="table table-hover table-info mt-5">
+        <thead>
+          <tr>
+            <th>講座名</th>
+            <th>購入時価格（税込）</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order.order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.lesson.name %></td>
+            <td><%= order_detail.price %>円</td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div class="row mt-5">
+        <h5 class="col-2">【注文日】</h5>
+        <p class="col-3 fs-5 border"><%= l @order.created_at %></p>
+        <h5 class="col-2 ms-5">【更新日】</h5>
+        <p class="col-3 fs-5 border"><%= l @order.updated_at %></p>
+      </div>
+      <div class="row mt-5">
+        <h5 class="col-2">【送料】</h5>
+        <p class="col-2 fs-5 border"><%= @order.shipping_fee %>円</p>
+        <h5 class="col-2 ms-5">【総額】</h5>
+        <p class="col-2 fs-5 border"><%= @order.total_price %>円</p>
+      </div>
+      <div class="row mt-5">
+        <h5 class="col-2">【支払方法】</h5>
+        <p class="col-3 fs-5 border"><%= @order.payment_method_i18n %></p>
+      </div>
+      <div class="row mt-5">
+        <h5 class="col-2">【配送先】</h5>
+        <p class="col-2 fs-5 border">〒<%= @order.address.postal_code %></p>
+        <p class="col-7 fs-5 border ms-2"><%= @order.address.address %></p>
+      </div>
+      <div class="row mt-5">
+        <h5 class="col-3 mb-3">【注文ステータス】</h5>
+        <%= form_with model:@order, url: { controller: 'orders', action: 'update' }, method: :patch, local:true do |f| %>
+          <%= f.radio_button:order_status, :payment_waiting, class: "form-check-input" %>
+          <%= f.label:order_status, "入金待ち", class: "form-check-label" %>
+          <%= f.radio_button:order_status, :delivery_pending, class: "form-check-input" %>
+          <%= f.label:order_status, "発送待ち", class: "form-check-label" %>
+          <%= f.radio_button:order_status, :completed, class: "form-check-input" %>
+          <%= f.label:order_status, "完了", class: "form-check-label" %>
+          <%= f.submit "変更する", class: "btn btn-primary ms-3" %>
+        <% end %>
+      </div>
+      <%= link_to "一覧へ戻る", admin_root_path, class: "btn btn-info mt-5" %>
+    </div>
+  </div>
+</div>

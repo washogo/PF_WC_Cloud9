@@ -11,7 +11,7 @@ module ApplicationHelper
     tax_price=lesson.price * 1.1
     "#{tax_price.to_i}"
   end
-  
+
   def contract_period(period)
     if period==0
       "単発"
@@ -19,7 +19,7 @@ module ApplicationHelper
       "#{period}ヶ月"
     end
   end
-  
+
   def is_in_lecture(state)
     if state
       "開講中"
@@ -27,9 +27,9 @@ module ApplicationHelper
       "閉講中"
     end
   end
-  
+
   def update_at_date(updated_at, multiple)
     updated_at + 24*60*60 * multiple*30
   end
-  
+
 end

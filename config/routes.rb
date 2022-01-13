@@ -35,5 +35,6 @@ Rails.application.routes.draw do
     resources :lessons, except:[:new, :create, :edit, :update]
     resources :tags, only:[:index, :destroy]
     resources :evaluations, only:[:show, :index]
+    resources :orders, only:[:show, :update]
   end
 end

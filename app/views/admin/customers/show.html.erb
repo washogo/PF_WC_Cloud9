@@ -43,7 +43,7 @@
             <% @have_lessons.each do |have_lesson| %>
             <tr>
               <td>
-              <%= link_to have_lesson_path(have_lesson.id), class: "link-dark" do %>
+              <%= link_to admin_lesson_path(have_lesson.lesson.id), class: "link-dark" do %>
                 <%= have_lesson.lesson.name %>
               <% end %>
               </td>
@@ -76,7 +76,7 @@
             <% @lessons.each do |lesson| %>
             <tr>
               <td>
-              <%= link_to lesson_path(lesson.id), class: "link-dark" do %>
+              <%= link_to admin_lesson_path(lesson.id), class: "link-dark" do %>
                 <%= lesson.name %>
               <% end %>
               </td>
