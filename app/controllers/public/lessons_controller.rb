@@ -52,6 +52,10 @@ class Public::LessonsController < ApplicationController
   end
 
   def result
+    # @search_params = lesson_search_params
+    # @lessons = Lesson.search(@search_params)
+    # byebug
+    # if params[:search][:tags].present?
     @lessons=Lesson.none
     @tag_lists=TagList.none
     tag_ids=params[:search][:tags].select(&:present?)
@@ -59,14 +63,17 @@ class Public::LessonsController < ApplicationController
     tag_ids.each do |tag_id|
       @tag_lists=@tag_lists.or(TagList.where(tag_id: tag_id))
     end
-
+    # byebug
     @tag_lists.each do |tag_list|
-      @lessons=@lessons.or(Lesson.where(id: tag_list.lesson.id))
+      @lessons=@lessons.or(Lesson.where('id = ?' ,tag_list.lesson_id))
     end
+    # end
 
-    @search_params = lesson_search_params
-    @lessons = @lessons.search(@search_params)
-
+    @search_params=lesson_search_params
+    # byebug
+    @lessons=@lessons.search(@search_params)
+    # byebug
+    
   end
 
   private
@@ -78,5 +85,5 @@ class Public::LessonsController < ApplicationController
   def lesson_params
     params.require(:lesson).permit(:name, :content, :attending_style, :contract_period, :price, :access, :is_in_lecture, :category_id)
   end
-  
+
 end

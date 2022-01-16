@@ -18,7 +18,11 @@
         <tbody>
           <% @lessons.each do |lesson| %>
           <tr>
-            <td><%= lesson.name %></td>
+            <td>
+              <%= link_to lesson_path(lesson.id), class: "link-dark" do %>
+                <%= lesson.name %>
+              <% end %>  
+            </td>
             <td><%= lesson.category.name %></td>
             <td>
             <% lesson.tags.each do |tag| %>

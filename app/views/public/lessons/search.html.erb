@@ -5,15 +5,16 @@
     <div class="col-9 offset-md-1">
       <h2 class="mt-5">学びたい</h2>
       <%= form_with scope: :search, url: result_lessons_path, local:true do |f| %>
-        <div class="col-3 mt-5">
-          <%= f.label:category_id, "カテゴリー", class: "form-label" %>
-          <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "カテゴリー選択"}, class: "form-control" ) %>
-        </div>
-        <div class="col-9 mt-5">
-          <p>タグ（複数選択可）</p>
+      　<div class="col-9 mt-5">
+          <p>タグ（複数選択可）（or検索）</p>
           <div class="fs-5 d-flex justify-content-evenly">
           <%= f.collection_check_boxes:tags, @tags, :id, :name, class: "form-check-input" %>
           </div>
+        </div>
+        
+        <div class="col-3 mt-5">
+          <%= f.label:category_id, "カテゴリー", class: "form-label" %>
+          <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "カテゴリー選択"}, class: "form-control" ) %>
         </div>
         <div class="col-4 mt-5">
           <%= f.label:attending_style, "学び方", class: "form-label me-3" %>
