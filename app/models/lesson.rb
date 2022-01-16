@@ -26,4 +26,18 @@ class Lesson < ApplicationRecord
     end
   end
   
+  scope :search, -> (search_params) do     
+    return if search_params.blank?      
+
+    category_id(search_params[:category_id])
+      .attending_style(search_params[:attending_style])
+      .access(search_params[:access])
+      .price(search_params[:price])   
+  end
+  
+  scope :category_id, -> (category_id) { where('category_id = ? ', category_id) if category_id.present? } 
+  scope :attending_style, -> (attending_style) { where('attending_style = ?', attending_style) if attending_style.present? }
+  scope :access, -> (access) { where('access LIKE ?', "%#{access}%") if access.present? }
+  scope :price, -> (price) { where('price <= ?', price) if price.present? }
+  
 end
