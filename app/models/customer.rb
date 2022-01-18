@@ -9,6 +9,8 @@ class Customer < ApplicationRecord
   has_many :addresses
   has_many :orders
   has_many :have_lessons
+  has_many :comments
+  has_many :reply_comments
 
   attachment :image
 

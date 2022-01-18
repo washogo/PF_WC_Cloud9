@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     resources :addresses, except:[:new, :show]
     resources :have_lessons, only:[:index, :show, :update]
     resources :evaluations, only:[:new, :create, :show, :index]
+    resources :comments, except:[:show] do
+      resources :reply_comments, only:[:create, :destroy]
+    end
+      
   end
 
   namespace :admin do

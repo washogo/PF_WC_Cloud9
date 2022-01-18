@@ -14,7 +14,21 @@
 //= require popper
 //= require bootstrap-sprockets
 
+//= require jquery
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+/* global $ */
+$(function () {
+  $(document).on('click', '#open', function(){
+    $('#modal').removeClass('hidden');
+    $('#mask').removeClass('hidden');
+  });
+  $('#close').on('click', function(){
+    $('#modal').addClass('hidden');
+    $('#mask').addClass('hidden');
+  });
+});
