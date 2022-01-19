@@ -9,12 +9,23 @@ class Public::CommentsController < ApplicationController
     @comment=Comment.new(comment_params)
     @comment.customer_id=current_customer.id
     @comment.save
-    redirect_to comments_path
+    if params[:comment][:id].present?
+      ReplyRelationship.create(main_comment_id: params[:comment][:id], reply_id: @comment.id)
+      redirect_to comment_path(params[:comment][:id])
+    else
+      redirect_to comments_path
+    end
   end
 
   def index
+    @reply_relationships=ReplyRelationship.all
     @comments=Comment.all
-    @reply_comment=ReplyComment.new
+    @comment=Comment.new
+  end
+
+  def show
+    @main_comment=Comment.find(params[:id])
+    @comment=Comment.new
   end
 
   def edit

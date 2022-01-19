@@ -1,0 +1,57 @@
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<div class="container">
+  <div class="row">
+    <%= render 'layouts/sidebar' %>
+    <div class="col-9 offset-md-1">
+      <%= render 'public/menue' %>
+      <h2 class="col-3 mt-5">しゃべり場</h2>
+      <div class="card col-10 mt-5">
+        <div class="card-header"><%= @main_comment.customer.nickname %></div>
+        <div class="card-body">
+          <p class="card-title"><%= @main_comment.id %></p>
+          <p class="card-text"><%= @main_comment.comment %></p>
+          <div class="row d-flex justify-content-end">
+            <% if @main_comment.customer_id == current_customer.id %>
+              <%= link_to "編集", edit_comment_path(@main_comment.id), class: "btn btn-primary btn-sm col-1 me-3" %>
+              <%= link_to "削除", "/comments/#{@main_comment.id}", method: :delete,  class: "btn btn-danger btn-sm col-1 me-3" %>
+            <% end %>
+            <button id="open" class="btn btn-info btn-sm col-1">返信</button>
+          </div>
+        </div>
+      </div>
+
+      <!--モーダルの周囲を薄暗くするマスク-->
+      <div id="mask" class="hidden"></div>
+      <!--モーダル-->
+      <div id="modal" class="hidden">
+        <%= form_with model:@comment, local:true do |f| %>
+          <%= f.hidden_field:id, :value => @main_comment.id %>
+          <%= f.label:comment, "返信コメント", class: "form-label" %>
+          <%= f.text_area:comment, class: "form-control" %>
+          <div class="row mt-5 d-flex justify-content-end">
+            <%= f.submit "返信する", class: "btn btn-info col-2 me-2" %>
+            <%= link_to "キャンセル", comments_path, class: "btn btn-primary col-2" %>
+          </div>
+        <% end %>
+      </div>
+
+      <% @main_comment.replied.each do |reply| %>
+        <div class="card col-8 mt-5">
+          <div class="card-header"><%= reply.customer.nickname %></div>
+          <div class="card-body">
+            <%= link_to comment_path(reply.id), class: "card-title" do %>
+              <%= reply.id %>
+            <% end %>
+            <p class="card-text"><%= reply.comment %></p>
+            <div class="row d-flex justify-content-end">
+              <% if reply.customer_id == current_customer.id %>
+                <%= link_to "編集", edit_comment_path(reply.id), class: "btn btn-primary btn-sm col-1 me-3" %>
+                <%= link_to "削除", "/comments/#{reply.id}", method: :delete,  class: "btn btn-danger btn-sm col-1 me-3" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

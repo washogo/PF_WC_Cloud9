@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Public::ReplyCommentsControllerTest < ActionDispatch::IntegrationTest
+class ReplyRelationshipTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

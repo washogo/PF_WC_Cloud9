@@ -27,8 +27,5 @@ $(function () {
     $('#modal').removeClass('hidden');
     $('#mask').removeClass('hidden');
   });
-  $('#close').on('click', function(){
-    $('#modal').addClass('hidden');
-    $('#mask').addClass('hidden');
-  });
+
 });

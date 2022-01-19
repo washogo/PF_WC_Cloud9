@@ -4,13 +4,12 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :lessons
-  has_many :cart_lessons
-  has_many :addresses
-  has_many :orders
-  has_many :have_lessons
-  has_many :comments
-  has_many :reply_comments
+  has_many :lessons, dependent: :destroy
+  has_many :cart_lessons, dependent: :destroy
+  has_many :addresses, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :have_lessons, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   attachment :image
 
