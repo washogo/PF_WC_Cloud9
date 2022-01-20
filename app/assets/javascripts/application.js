@@ -28,4 +28,32 @@ $(function () {
     $('#mask').removeClass('hidden');
   });
 
+  $(".menu-box").css("display", "none");
+  //////////// タブの制御
+  $('.tab').hover(function () { // タブメニューをhoverしたら
+      var index = $('.tab').index(this); // hoverしたタブ番号を取得
+      $('.tab').removeClass('current'); // タブ現在地クラスを削除し、
+      $(this).addClass('current'); // hoverしたタブにタブ現在地クラスを付与
+      //////////// コンテンツの制御
+      $('.menu-box').hide().eq(index).fadeIn(); // hoverしてないコンテンツは非表示、hoverした番号は表示
+    });
+
+  $('.menu').hover(function () {
+      $(this).addClass('current');
+  }, function () {
+    $(this).removeClass('current');
+  });
+
+  $('.menu-box').hover(function () {
+    }, function () {
+      $('.tab').removeClass('current');
+      $(this).hide();
+    });
+
+
+  $('.tab').click(function () {
+      $('.tab').removeClass('current');
+      $('.menu-box').hide();
+    });
+
 });

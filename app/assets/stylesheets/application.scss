@@ -14,3 +14,52 @@
  *= require_self
  */
  @import 'bootstrap';
+
+.tab {
+  position: relative;
+  padding: 5px;
+  // border: 1mm ridge white;
+  background-color: #fff;
+  transition: all .2s;
+  cursor: pointer;
+}
+.tab:not(:last-of-type) {
+  margin-right: 1em;
+}
+
+.current {
+  color: #fff;
+  background-color: #a9ceec;
+}
+.current::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+ul {
+  margin: 0;
+}
+
+.menu-box {
+  width: 100%;
+}
+.menu {
+  // color: #fff;
+  padding: 1em 1em;
+  background-color: #a9ceec;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover{
+  color:#fff;
+}

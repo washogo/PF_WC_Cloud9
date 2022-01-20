@@ -1,9 +1,9 @@
 <%= render 'public/after_sign_in_nav', customer: current_customer %>
 <div class="container">
   <div class="row">
-    <%= render 'layouts/sidebar' %>
+    <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
-      <%= render 'public/menue' %>
+      <%= render 'public/menu' %>
       <h2 class="col-3 mt-5">新規コメント</h2>
       <%= form_with model:@comment, local:true do |f| %>
         <%= f.label:comment, "内容", class: "form-label mt-5 fs-5" %>

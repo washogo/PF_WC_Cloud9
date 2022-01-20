@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row">
-    <%= render 'layouts/sidebar' %>
     <div class="col-8 offset-md-2">
       <h2 class="mt-5">ログイン画面</h2>
       <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>

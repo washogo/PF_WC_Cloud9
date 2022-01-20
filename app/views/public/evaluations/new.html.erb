@@ -1,9 +1,9 @@
 <%= render 'public/after_sign_in_nav', customer: current_customer %>
 <div class="container">
   <div class="row">
-    <%= render 'layouts/sidebar' %>
+    <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
-      <%= render 'public/menue' %>
+      <%= render 'public/menu' %>
       <h2 class="mt-5">評価作成</h2>
       <%= form_with model:@evaluation, local:true do |f| %>
       <div class="col-3 fs-5 mt-5">

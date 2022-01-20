@@ -1,7 +1,8 @@
-<%= render 'admin/after_sign_in_nav' %>
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<%= render 'public/menu' %>
 <div class="container">
   <div class="row">
-    <%= render 'layouts/sidebar' %>
+    <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
       <h2 class="mt-5">学びたい</h2>
       <%= form_with scope: :search, url: result_lessons_path, local:true do |f| %>
@@ -11,7 +12,7 @@
           <%= f.collection_check_boxes:tags, @tags, :id, :name, class: "form-check-input" %>
           </div>
         </div>
-        
+
         <div class="col-3 mt-5">
           <%= f.label:category_id, "カテゴリー", class: "form-label" %>
           <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "カテゴリー選択"}, class: "form-control" ) %>
@@ -26,10 +27,11 @@
         </div>
         <div class="col-5 mt-5">
           <%= f.label:price, "価格帯", class: "form-label me-3" %>
-          <%= f.select:price, [ ["〜¥1000", 1000], ["〜¥5000", 5000], ["〜¥10000", 10000], ["〜¥50000", 50000], ["〜¥100000", 100000] ], prompt: "予算" %> 
+          <%= f.select:price, [ ["〜¥1000", 1000], ["〜¥5000", 5000], ["〜¥10000", 10000], ["〜¥50000", 50000], ["〜¥100000", 100000] ], prompt: "予算" %>
         </div>
         <%=f.submit "検索する", class: "btn btn-info mt-5" %>
       <% end %>
     </div>
   </div>
 </div>
+<%= render 'layouts/footer' %>

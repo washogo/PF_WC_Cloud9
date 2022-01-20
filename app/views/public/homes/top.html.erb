@@ -1,13 +1,13 @@
 <% if customer_signed_in?%>
-<%= render 'public/after_sign_in_nav', customer: current_customer %>
+  <%= render 'public/after_sign_in_nav', customer: current_customer %>
+  <%= render 'public/menu' %>
 <% else %>
-<%= render 'layouts/before_sign_in_nav' %>
+  <%= render 'layouts/before_sign_in_nav' %>
 <% end %>
 <div class="container">
   <div class="row">
-    <%= render 'layouts/sidebar' %>
+    <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-10">
-      <%= render 'public/menue' %>
       <h2 class="mt-5">講座一覧</h2>
       <table>
         <thead></thead>

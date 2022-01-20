@@ -1,9 +1,9 @@
 <%= render 'public/after_sign_in_nav', customer: current_customer %>
 <div class="container">
   <div class="row">
-    <%= render 'layouts/sidebar' %>
+    <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
-      <%= render 'public/menue' %>
+      <%= render 'public/menu' %>
       <h2 class="mt-5">注文情報入力画面</h2>
       <%= form_with model:@order, url: { controller: 'orders', action: 'confirmation' }, local:true do |f| %>
       <h3 class="mt-5">配送先</h3>
