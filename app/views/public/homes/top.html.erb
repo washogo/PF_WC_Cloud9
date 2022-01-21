@@ -8,11 +8,37 @@
   <div class="row">
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-10">
-      <h2 class="mt-5">講座一覧</h2>
-      <table>
-        <thead></thead>
-        <tbody></tbody>
-      </table>
+      <div class="card col-8 mt-5">
+        <div class="card-body">
+          <h2 class="card-title">学ぶ</h2>
+          <p class="card-text">
+            LearnCommunityにはあなたの夢や目標に合った講座があります。</br>
+            学び方もオンラインから全国各地まで多様にあります。</br>
+            まずは検索してみませんか？
+          </p>
+          <%= link_to "講座を見る", search_lessons_path, class: "btn btn-info" %>
+        </div>
+      </div>
+      <div class="card col-8 mt-5">
+        <div class="card-body">
+          <h2 class="card-title">教える</h2>
+          <p class="card-text">
+            LearnCommunityにはあなたのスキルを活かす場があります。</br>
+            好きなことや得意なことを仕事にしませんか？</br>
+          </p>
+          <%= link_to "講座を見る", search_lessons_path, class: "btn btn-info" %>
+        </div>
+      </div>
+      <div class="card col-8 mt-5">
+        <div class="card-body">
+          <h2 class="card-title">しゃべる</h2>
+          <p class="card-text">
+            LearnCommunityにはあなたを応援するコミュニティがあります。</br>
+            学び教える仲間たちと交流することは、あなたの心も成長させることでしょう。</br>
+          </p>
+          <%= link_to "しゃべり場をのぞく", comments_path, class: "btn btn-warning" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

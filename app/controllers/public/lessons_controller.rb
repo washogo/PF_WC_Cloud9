@@ -1,5 +1,5 @@
 class Public::LessonsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except:[:search, :result]
 
   def new
     @lesson=Lesson.new

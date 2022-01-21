@@ -5,48 +5,31 @@
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
       <h2 class="mt-5">講座一覧</h2>
-      <table class="table table-hover table-sm">
-        <thead>
-          <tr>
-            <th>講座名</th>
-            <th>カテゴリー</th>
-            <th>タグ</th>
-            <th>受講場所</th>
-            <th>期間</th>
-            <th>税抜価格</th>
-            <th>開講状況</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @lessons.each do |lesson| %>
-          <tr>
-            <td>
-              <%= link_to lesson_path(lesson.id), class: "link-dark" do %>
-                <%= lesson.name %>
-              <% end %>
-            </td>
-            <td><%= lesson.category.name %></td>
-            <td>
-              <% lesson.tags.each do |tag| %>
-                <button class="btn btn-success btn-sm m-1"><%= tag.name %></button>
-              <% end %>
-            </td>
-            <td><%= lesson.attending_style_i18n %></td>
-            <td>
-              <%= contract_period(lesson.contract_period) %>
-            </td>
-            <td><%= lesson.price %>円</td>
-            <td>
-              <% if lesson.is_in_lecture %>
-                開講中
-              <% else %>
-                閉講
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="row">
+        <% @lessons.each do |lesson| %>
+        <div class="card col-5 m-3">
+          <div class="card-body">
+            <h4 class="card-title">
+            <%= link_to lesson_path(lesson.id), class: "link-dark" do %>
+              <%= lesson.name %>
+            <% end %>
+            </h4>
+            <button class="btn btn-category btn-sm"><%= lesson.category.name %></button>
+            <% if lesson.is_in_lecture %>
+              <button class="btn btn-info btn-sm">開講中</button>
+            <% else %>
+              <button class="btn btn-secondary btn-sm">準備中</button>
+            <% end %>
+            <h5 class="card-subtitle mt-3"><%= lesson.customer.nickname %></h5>
+            <p class="card-text"><%= lesson.content %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= lesson.attending_style_i18n %></li>
+            <li class="list-group-item"><%= contract_period(lesson.contract_period) %><%= lesson.price %>円</li>
+          </ul>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

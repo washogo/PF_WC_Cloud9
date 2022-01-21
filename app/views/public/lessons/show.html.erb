@@ -6,7 +6,7 @@
     <div class="col-9 offset-md-1">
       <h2 class="col mt-5">【<%= @lesson.name %>】</h2>
       <div class="row mt-5">
-        <h5 class="col-2">先生名</h5>
+        <h5 class="col-2">講師</h5>
         <p class="col-3 fs-5 border">
         <%= link_to customer_path(@lesson.customer_id), class: "link-dark" do %>
           <%= @lesson.customer.nickname %>
@@ -15,7 +15,11 @@
       </div>
       <div class="row mt-5">
         <h5 class="col-2">開講状況</h5>
-        <button class="btn btn-secondary col-2"><%= is_in_lecture(@lesson.is_in_lecture) %></button>
+        <% if @lesson.is_in_lecture %>
+          <button class="btn btn-dark col-2">開講中</button>
+        <% else %>
+          <button class="btn btn-light col-2">準備中</button>
+        <% end %>
       </div>
       <div class="row mt-5">
         <h5 class="col-2">評価平均</h5>
@@ -47,13 +51,13 @@
       <div class="row mt-5">
         <div class="col-3">
           <h5>カテゴリー</h5>
-          <p class="fs-5 border ms-3"><%= @lesson.category.name %></p>
+          <button class="btn btn-category"><%= @lesson.category.name %></botton>
         </div>
         <div class="col-6 offset-md-1">
           <h5>タグ</h5>
           <p class="fs-5 ms-3">
             <% @lesson.tags.each do |tag| %>
-              <button class="btn btn-success"><%= tag.name %></button>
+              <button class="btn btn-tag"><%= tag.name %></button>
             <% end %>
           </p>
         </div>

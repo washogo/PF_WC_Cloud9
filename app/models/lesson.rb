@@ -11,6 +11,24 @@ class Lesson < ApplicationRecord
 
   enum attending_style: { online: 0, offline: 1 }
 
+  with_options presence: true do
+    validates :name
+    validates :content
+    validates :attending_style
+    validates :contract_period
+    validates :price
+    validates :is_in_lecture
+    validates :access
+  end
+
+  validates :attending_style, inclusion: { in: [0, 1] }
+  validates :is_in_lecture, inclusion; { in: [true, false] }
+  
+  with_options numericality: true
+    validates :contract_period
+    validates :price
+  end
+
   def save_tag(made_tags)
     current_tags=self.tags.pluck(:name) unless self.tags.nil?
     old_tags=current_tags - made_tags
@@ -25,19 +43,19 @@ class Lesson < ApplicationRecord
       self.tags << new_tag
     end
   end
-  
-  scope :search, -> (search_params) do     
-    return if search_params.blank?      
+
+  scope :search, -> (search_params) do
+    return if search_params.blank?
 
     category_id(search_params[:category_id])
       .attending_style(search_params[:attending_style])
       .access(search_params[:access])
-      .price(search_params[:price])   
+      .price(search_params[:price])
   end
-  
-  scope :category_id, -> (category_id) { where('category_id = ? ', category_id) if category_id.present? } 
+
+  scope :category_id, -> (category_id) { where('category_id = ? ', category_id) if category_id.present? }
   scope :attending_style, -> (attending_style) { where('attending_style = ?', attending_style) if attending_style.present? }
   scope :access, -> (access) { where('access LIKE ?', "%#{access}%") if access.present? }
   scope :price, -> (price) { where('price <= ?', price) if price.present? }
-  
+
 end

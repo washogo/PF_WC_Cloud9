@@ -1,5 +1,9 @@
-<%= render 'admin/after_sign_in_nav' %>
-<%= render 'public/menu' %>
+<% if current_customer %>
+  <%= render 'public/after_sign_in_nav', customer: current_customer %>
+  <%= render 'public/menu' %>
+<% else %>
+  <%= render 'layouts/before_sign_in_nav' %>
+<% end %>
 <div class="container">
   <div class="row">
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
@@ -11,9 +15,8 @@
             <th>講座名</th>
             <th>カテゴリー</th>
             <th>タグ</th>
-            <th>受講形態</th>
-            <th>アクセス先</th>
-            <th>価格(税抜)</th>
+            <th>学び方</th>
+            <th>税込価格</th>
           </tr>
         </thead>
         <tbody>
@@ -24,14 +27,18 @@
                 <%= lesson.name %>
               <% end %>
             </td>
-            <td><%= lesson.category.name %></td>
+            <td>
+              <button class="btn btn-category btn-sm"><%= lesson.category.name %></button>
+            </td>
             <td>
             <% lesson.tags.each do |tag| %>
-              <%= tag.name %>
+              <button class="btn btn-tag btn-sm"><%= tag.name %></button>
             <% end %>
             </td>
-            <td><%= lesson.attending_style_i18n %></td>
-            <td><%= lesson.access %></td>
+            <td>
+              <%= lesson.attending_style_i18n %></br>
+              <%= lesson.access %>
+            </td>
             <td><%= tax_price(lesson) %>円</td>
           </tr>
           <% end %>

@@ -26,7 +26,7 @@
 
 .current {
   color: #fff;
-  background-color: #a9ceec;
+  background-color: #87cefa;
 }
 .current::before {
   content: "";
@@ -48,7 +48,7 @@ ul {
 .menu {
   // color: #fff;
   padding: 1em 1em;
-  background-color: #a9ceec;
+  background-color: #87cefa;
   transition: all .2s;
   cursor: pointer;
 }
@@ -60,5 +60,13 @@ ul {
 
 .link:hover{
   color: #fff;
-  background-color: #a9ceec;
+  background-color: #87cefa;
+}
+
+.btn-category {
+  background-color: #00ffff;
+}
+
+.btn-tag {
+  background-color: #6495ed;
 }

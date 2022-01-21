@@ -1,5 +1,9 @@
-<%= render 'public/after_sign_in_nav', customer: current_customer %>
-<%= render 'public/menu' %>
+<% if current_customer %>
+  <%= render 'public/after_sign_in_nav', customer: current_customer %>
+  <%= render 'public/menu' %>
+<% else %>
+  <%= render 'layouts/before_sign_in_nav' %>
+<% end %>
 <div class="container">
   <div class="row">
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
@@ -34,4 +38,3 @@
     </div>
   </div>
 </div>
-<%= render 'layouts/footer' %>

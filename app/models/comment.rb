@@ -6,5 +6,8 @@ class Comment < ApplicationRecord
 
   has_many :replied_relationships, class_name: "ReplyRelationship", foreign_key: "main_comment_id", dependent: :destroy
   has_many :replied, through: :replied_relationships, source: :reply
+
+  validates :comment, presence: true
   
+
 end
