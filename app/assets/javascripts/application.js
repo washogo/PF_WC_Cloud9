@@ -22,38 +22,39 @@
 //= require_tree .
 
 /* global $ */
-$(function () {
+$(document).on('turbolinks:load', function () {
   $(document).on('click', '#open', function(){
     $('#modal').removeClass('hidden');
     $('#mask').removeClass('hidden');
   });
 
-  $(".menu-box").css("display", "none");
-  //////////// タブの制御
-  $('.tab').hover(function () { // タブメニューをhoverしたら
-      var index = $('.tab').index(this); // hoverしたタブ番号を取得
-      $('.tab').removeClass('current'); // タブ現在地クラスを削除し、
-      $(this).addClass('current'); // hoverしたタブにタブ現在地クラスを付与
-      //////////// コンテンツの制御
-      $('.menu-box').hide().eq(index).fadeIn(); // hoverしてないコンテンツは非表示、hoverした番号は表示
-    });
+  $('.tab').hover(function () {
+    var index = $('.tab').index(this);
+    $('.tab').removeClass('current');
+    $(this).addClass('current');
+    $('.menu-box').hide().eq(index).fadeIn();
+  }, function() {
+    $(this).removeClass('current');
+    $('.menu-box').hide();
+  });
 
   $('.menu').hover(function () {
-      $(this).addClass('current');
+    $(this).addClass('current');
   }, function () {
     $(this).removeClass('current');
   });
 
   $('.menu-box').hover(function () {
-    }, function () {
-      $('.tab').removeClass('current');
-      $(this).hide();
+    var index = $('.menu-box').index(this);
+    $('.tab').eq(index).addClass('current');
+    $(this).show();
+  }, function () {
+    $('.tab').removeClass('current');
+    $(this).hide();
     });
 
-
-  $('.tab').click(function () {
-      $('.tab').removeClass('current');
-      $('.menu-box').hide();
-    });
+  $(document).on('click', '.menu', function () {
+    $('.menu-box').hide();
+  });
 
 });

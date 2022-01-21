@@ -1,9 +1,9 @@
 <%= render 'public/after_sign_in_nav', customer: current_customer %>
+<%= render 'public/menu' %>
 <div class="container">
   <div class="row">
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
-      <%= render 'public/menu' %>
       <h2 class="mt-5">基本情報確認・編集画面</h2>
       <%= form_with model:@customer, url: {controller: 'customers', action: 'update' }, method: :patch, local:true do |f| %>
       <div class="row">

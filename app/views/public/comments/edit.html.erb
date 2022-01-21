@@ -1,9 +1,9 @@
 <%= render 'public/after_sign_in_nav', customer: current_customer %>
+<%= render 'public/menu' %>
 <div class="container">
   <div class="row">
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
-      <%= render 'public/menu' %>
       <h2 class="col-3 mt-5">コメント編集</h2>
       <div class="col-10 mt-5">
       <%= form_with model:@comment, method: :patch, local:true do |f| %>

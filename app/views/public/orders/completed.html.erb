@@ -1,9 +1,9 @@
 <%= render 'public/after_sign_in_nav', customer: current_customer %>
+<%= render 'public/menu' %>
 <div class="container">
   <div class="row">
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
-      <%= render 'public/menu' %>
       <div class="alert alert-info col-6 mt-5">
         <h2 class="alert-heading">注文ありがとうございました！</h2>
         <p>

@@ -16,9 +16,6 @@
  @import 'bootstrap';
 
 .tab {
-  position: relative;
-  padding: 5px;
-  // border: 1mm ridge white;
   background-color: #fff;
   transition: all .2s;
   cursor: pointer;
@@ -46,6 +43,7 @@ ul {
 
 .menu-box {
   width: 100%;
+  display: none;
 }
 .menu {
   // color: #fff;
@@ -61,5 +59,6 @@ ul {
 }
 
 .link:hover{
-  color:#fff;
+  color: #fff;
+  background-color: #a9ceec;
 }
