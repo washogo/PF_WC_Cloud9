@@ -10,9 +10,13 @@ class Public::LessonsController < ApplicationController
   def create
     @lesson=Lesson.new(lesson_params)
     @lesson.customer_id=current_customer.id
-    tag_list=params[:lesson][:tags][:name].split(',')
     @lesson.save
-    @lesson.save_tag(tag_list)
+
+    if params[:lesson][:tags].present?
+      tag_list=params[:lesson][:tags][:name].split(",")
+      @lesson.save_tag(tag_list)
+    end
+
     redirect_to customer_path(current_customer.id)
   end
 
@@ -29,14 +33,17 @@ class Public::LessonsController < ApplicationController
   def edit
     @lesson=Lesson.find(params[:id])
     @categories=Category.all
-    # @tag_lists=TagLists.where(lesson_id: @lesson.id)
   end
 
   def update
     @lesson=Lesson.find(params[:id])
-    tag_list=params[:lesson][:tags][:name].split(',')
     @lesson.update(lesson_params)
-    @lesson.save_tag(tag_list)
+
+    if params[:lesson][:tags]
+      tag_list=params[:lesson][:tags][:name].split(",")
+      @lesson.save_tag(tag_list)
+    end
+    
     redirect_to customer_path(current_customer.id)
   end
 
@@ -52,28 +59,24 @@ class Public::LessonsController < ApplicationController
   end
 
   def result
-    # @search_params = lesson_search_params
-    # @lessons = Lesson.search(@search_params)
-    # byebug
-    # if params[:search][:tags].present?
     @lessons=Lesson.none
-    @tag_lists=TagList.none
-    tag_ids=params[:search][:tags].select(&:present?)
 
-    tag_ids.each do |tag_id|
-      @tag_lists=@tag_lists.or(TagList.where(tag_id: tag_id))
+    if params[:search][:tags]
+      @tag_lists=TagList.none
+      tag_ids=params[:search][:tags].select(&:present?)
+
+      tag_ids.each do |tag_id|
+        @tag_lists=@tag_lists.or(TagList.where(tag_id: tag_id))
+      end
+
+      @tag_lists.each do |tag_list|
+        @lessons=@lessons.or(Lesson.where('id = ?' ,tag_list.lesson_id))
+      end
     end
-    # byebug
-    @tag_lists.each do |tag_list|
-      @lessons=@lessons.or(Lesson.where('id = ?' ,tag_list.lesson_id))
-    end
-    # end
 
     @search_params=lesson_search_params
-    # byebug
     @lessons=@lessons.search(@search_params)
-    # byebug
-    
+
   end
 
   private
@@ -83,7 +86,7 @@ class Public::LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:name, :content, :attending_style, :contract_period, :price, :access, :is_in_lecture, :category_id)
+    params.require(:lesson).permit(:name, :content, :attending_style, :contract_period, :price, :access, :is_in_lecture, :category_id, tags_attributes: [:name])
   end
 
 end

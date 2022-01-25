@@ -25,10 +25,10 @@
             <%= tag.label:name, "タグ（カンマ , で区切って入力してください）", class: "form-label" %></br>
             <p>
               <% @lesson.tag_lists.each do |tag_list| %>
-                <button class="btn btn-success"><%= tag_list.tag.name %></button>
+                <button class="btn btn-tag"><%= tag_list.tag.name %></button>
               <% end %>
             </p>
-            <%= tag.text_field:name, class: "form-control" %>
+            <%= tag.text_area:name, class: "form-control" %>
           <% end %>
         </div>
         <div class="row mt-5">

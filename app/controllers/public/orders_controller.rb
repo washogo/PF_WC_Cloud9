@@ -23,10 +23,10 @@ class Public::OrdersController < ApplicationController
     @order.total_price=params[:order][:total_price]
     @order.address_id=params[:order][:address_id]
     @cart_lessons=CartLesson.where(customer_id: current_customer.id)
-    
+
     if @order.save
       @cart_lessons.each do |cart_lesson|
-        OrderDetail.create(order_id: @order.id, lesson_id: cart_lesson.lesson.id, price: cart_lesson.tax_price )
+        OrderDetail.create(order_id: @order.id, lesson_id: cart_lesson.lesson.id, price: cart_lesson.lesson.tax_price )
         HaveLesson.create(customer_id: current_customer.id, lesson_id: cart_lesson.lesson.id)
       end
       @cart_lessons.destroy_all

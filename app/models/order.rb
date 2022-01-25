@@ -14,16 +14,12 @@ class Order < ApplicationRecord
     validates :shipping_fee
   end
   
-  validates :payment_method, inclusion: { in: [0, 1] }
-  validates :order_status, inclusion: { in: [0, 1, 2] }
+  validates :payment_method, inclusion: { in: ["credit_card", "bank_transfer"] }
+  validates :order_status, inclusion: { in: ["payment_waiting", "delivery_pending", "completed"] }
   
   with_options numericality: true do
     validates :total_price
     validates :shipping_fee
-  end
-
-  def tax_price
-    self.price * 1.1
   end
 
 end

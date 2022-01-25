@@ -77,3 +77,6 @@ gem "refile-mini_magick"
 # enumで定義した値をi18n化させて日本語に変換する
 gem 'enum_help'
 
+# RSpecの導入
+gem 'rspec-rails'
+gem 'factory_bot_rails'

@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
 
   with_options presence: true do
     validates :email
-    validates :encrypted_password
+    validates :password
     validates :last_name
     validates :first_name
     validates :last_name_kana
@@ -23,9 +23,8 @@ class Customer < ApplicationRecord
     validates :phone_number
     validates :transfer_target
     validates :nickname
-    validates :profile
   end
-  
+
   with_options uniqueness: true do
     validates :email
     validates :encrypted_password
@@ -33,17 +32,17 @@ class Customer < ApplicationRecord
     validates :transfer_target
     validates :nickname
   end
-  
+
   validates :is_deleted, inclusion: { in: [true, false] }
 
   attachment :image
 
   def full_name
-    self.last_name + self.first_name
+    self.last_name + " " + self.first_name
   end
 
   def full_name_kana
-    self.last_name_kana + self.first_name_kana
+    self.last_name_kana + " " + self.first_name_kana
   end
 
   def full_address

@@ -9,7 +9,6 @@ class HaveLesson < ApplicationRecord
     validates :progress
   end
 
-
-  validates :is_in_study, inclusion: {in: [0, 1, 2]}
+  validates :is_in_study, inclusion: {in: ["not_started", "in_study", "learned"]}
 
 end

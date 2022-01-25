@@ -11,26 +11,24 @@
       <h2 class="mt-5">学びたい</h2>
       <%= form_with scope: :search, url: result_lessons_path, local:true do |f| %>
       　<div class="col-9 mt-5">
-          <p>タグ（複数選択可）（or検索）</p>
-          <div class="fs-5 d-flex justify-content-evenly">
+          <p class="fs-5">タグ（複数選択可）（or検索）</p>
           <%= f.collection_check_boxes:tags, @tags, :id, :name, class: "form-check-input" %>
-          </div>
         </div>
 
         <div class="col-3 mt-5">
-          <%= f.label:category_id, "カテゴリー", class: "form-label" %>
+          <%= f.label:category_id, "カテゴリー", class: "form-label fs-5" %>
           <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "カテゴリー選択"}, class: "form-control" ) %>
         </div>
         <div class="col-4 mt-5">
-          <%= f.label:attending_style, "学び方", class: "form-label me-3" %>
+          <%= f.label:attending_style, "学び方", class: "form-label me-3 fs-5" %>
           <%= f.select:attending_style, [ ["オンライン", "online"], ["オフライン", "offline"] ], prompt: "学ぶ場所" %>
         </div>
         <div class="col-9 mt-5">
-          <%= f.label:access, "都道府県", class: "form-label" %>
+          <%= f.label:access, "都道府県", class: "form-label fs-5" %>
           <%= f.text_field:access, class: "form-control" %>
         </div>
         <div class="col-5 mt-5">
-          <%= f.label:price, "価格帯", class: "form-label me-3" %>
+          <%= f.label:price, "価格帯", class: "form-label me-3 fs-5" %>
           <%= f.select:price, [ ["〜¥1000", 1000], ["〜¥5000", 5000], ["〜¥10000", 10000], ["〜¥50000", 50000], ["〜¥100000", 100000] ], prompt: "予算" %>
         </div>
         <%=f.submit "検索する", class: "btn btn-info mt-5" %>

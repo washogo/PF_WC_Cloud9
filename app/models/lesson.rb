@@ -4,7 +4,7 @@ class Lesson < ApplicationRecord
 
   has_many :tag_lists
   has_many :tags, through: :tag_lists
-  has_many :evaluation_lists
+  has_many :evaluations
   has_many :cart_lessons
   has_many :order_details
   has_many :have_lessons
@@ -21,13 +21,18 @@ class Lesson < ApplicationRecord
     validates :access
   end
 
-  validates :attending_style, inclusion: { in: [0, 1] }
-  validates :is_in_lecture, inclusion; { in: [true, false] }
-  
-  with_options numericality: true
+  validates :attending_style, inclusion: { in: ["online", "offline"] }
+  validates :is_in_lecture, inclusion: { in: [true, false] }
+
+  with_options numericality: true do
     validates :contract_period
     validates :price
   end
+
+  def tax_price
+    self.price * 1.1
+  end
+
 
   def save_tag(made_tags)
     current_tags=self.tags.pluck(:name) unless self.tags.nil?
@@ -35,7 +40,15 @@ class Lesson < ApplicationRecord
     new_tags=made_tags - current_tags
 
     old_tags.each do |old|
-      self.tags.delete Tag.find_by(name: old)
+      old_tag=Tag.find_by(name: old)
+      old_tag_list=self.tag_lists.where(tag_id: old_tag.id).find_by(tag_id: old_tag.id)
+      
+      if TagList.where(tag_id: old_tag.id).count == 1
+        old_tag.delete
+      else
+        old_tag_list.delete
+      end
+
     end
 
     new_tags.each do |new|
