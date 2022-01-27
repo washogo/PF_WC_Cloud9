@@ -33,7 +33,7 @@
       </table>
       <div class="d-flex justify-content-end mt-5">
         <p class="fs-4 col-2">【数量】<%= @cart_lessons.where(customer_id: current_customer.id).count %>　点</p>
-        <p class="fs-4 col-3">【合計】<%= total_price(@cart_lessons) %> 円</p>
+        <p class="fs-4 col-3">【合計】<%= total_price(@cart_lessons) %>　円</p>
       </div>
       <div class="row mt-5 d-flex justify-content-center">
         <%= link_to "注文画面へ", new_order_path, class: "btn btn-info col-2 me-5" %>

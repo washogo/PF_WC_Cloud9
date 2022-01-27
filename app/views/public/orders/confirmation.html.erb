@@ -37,18 +37,16 @@
           【合計】<%= sum.to_s %>円
         </p>
       </div>
+      <div class="row">
+        <h4>【配送先】</h4>
+        <p class="fs-5 ms-4">
+          <%= @order.address.name %></br>
+          〒<%= @order.address.postal_code %> <%= @order.address.address %>
+        </p>
+      </div>
       <div class="row mt-5">
-        <div class="col-5">
-          <h4>【配送先】</h4>
-          <div class="fs-5 ms-4">
-            <%= @order.address.name %></br>
-            〒<%= @order.address.postal_code %> <%= @order.address.address %>
-          </div>
-        </div>
-        <div class="col-5">
-          <h4>【支払方法】</h4>
-          <p class="fs-5 ms-4"><%= @order.payment_method_i18n %></p>
-        </div>
+        <h4>【支払方法】</h4>
+        <p class="fs-5 ms-4"><%= @order.payment_method_i18n %></p>
       </div>
       <%= form_with model:@order, url: { controller: 'orders', action: 'create' }, local:true do |f| %>
         <%= f.hidden_field:shipping_fee, :value => shipping_fee %>

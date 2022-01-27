@@ -1,9 +1,8 @@
-<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<%= render 'admin/after_sign_in_nav' %>
 <div class="container">
   <div class="row">
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
-      <%= render 'public/menue' %>
       <h2 class="mt-5">タグ一覧</h2>
       <table class="table table-hover mt-5">
         <thead>

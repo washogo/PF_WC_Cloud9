@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :customers, except:[:new, :create, :destroy]
-    resources :categories, except:[:new, :show]
+    resources :categories, except:[:new, :show, :edit]
     resources :lessons, except:[:new, :create, :edit, :update]
     resources :tags, only:[:index, :destroy]
     resources :evaluations, only:[:show, :index]

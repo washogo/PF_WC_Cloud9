@@ -40,8 +40,16 @@ class Public::CommentsController < ApplicationController
 
   def destroy
     @comment=Comment.find(params[:id])
-    @comment.destroy
-    redirect_to comments_path
+    
+    if @comment.replying.present?
+      id=@comment.replying.id
+      @comment.destroy
+      redirect_to comment_path(id)
+    else
+      @comment.destroy
+      redirect_to comments_path
+    end
+    
   end
 
   private

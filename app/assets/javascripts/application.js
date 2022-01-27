@@ -28,6 +28,7 @@ $(document).on('turbolinks:load', function () {
     $('#mask').removeClass('hidden');
   });
 
+
   $('.tab').hover(function () {
     var index = $('.tab').index(this);
     $('.tab').removeClass('current');

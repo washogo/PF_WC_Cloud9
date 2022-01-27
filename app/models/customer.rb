@@ -12,8 +12,6 @@ class Customer < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   with_options presence: true do
-    validates :email
-    validates :password
     validates :last_name
     validates :first_name
     validates :last_name_kana
@@ -26,8 +24,6 @@ class Customer < ApplicationRecord
   end
 
   with_options uniqueness: true do
-    validates :email
-    validates :encrypted_password
     validates :phone_number
     validates :transfer_target
     validates :nickname

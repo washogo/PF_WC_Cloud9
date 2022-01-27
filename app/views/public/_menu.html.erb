@@ -1,45 +1,46 @@
 <nav class="wrap shadow-sm">
   <ul class="d-flex offset-md-3">
-    <li class="tab me-5 fs-5 py-1">学びたい</li>
-    <li class="tab ms-3 me-5 fs-5 py-1">教えたい</li>
-    <li class="tab ms-3 me-5 fs-5 py-1">しゃべり場</li>
+    <li class="tab me-5 fs-5 py-1" id="learn-tag">学びたい</li>
+    <li class="tab ms-3 me-5 fs-5 py-1" id="teach-tag">教えたい</li>
+    <li class="tab ms-3 me-5 fs-5 py-1" id="communicate-tag">しゃべり場</li>
   </ul>
   <div>
     <div class="col-3 offset-md-3">
       <ul class="menu-box">
-        <li class="menu">
+        <li class="menu-1">
           <%= link_to "講座一覧", lessons_path, class: "link" %>
         </li>
-        <li class="menu">
+        <li class="menu-2">
           <%= link_to "検索する", search_lessons_path, class: "link" %>
         </li>
-        <li class="menu">
+        <li class="menu-3">
           <%= link_to "学び一覧", have_lessons_path, class: "link" %>
         </li>
       </ul>
       </div>
     <div class="col-3 offset-md-4">
       <ul class="menu-box ms-4">
-        <li class="menu">
+        <li class="menu-4">
           <%= link_to "振込先情報確認・変更", current_customer_transfer_path, class: "link" %>
         </li>
-        <li class="menu">
+        <li class="menu-5">
           <%= link_to "講座新規作成", new_lesson_path, class: "link" %>
         </li>
-        <li class="menu">
+        <li class="menu-6">
           <%= link_to "教え一覧", customer_path(current_customer), class: "link" %>
         </li>
       </ul>
     </div>
     <div class="col-3 offset-md-5">
       <ul class="menu-box ms-5">
-        <li class="menu">
+        <li class="menu-7">
           <%= link_to "しゃべり場に入る", comments_path, class: "link" %>
         </li>
-        <li class="menu">
+        <li class="menu-8">
           <%= link_to "新規コメント", new_comment_path, class: "link" %>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+<%= render 'layouts/notifications' %>

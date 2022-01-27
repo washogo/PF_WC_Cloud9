@@ -6,10 +6,11 @@
     <div class="col-9 offset-md-1">
       <h2 class="col-3 mt-5">しゃべり場</h2>
       <div class="card col-10 mt-5">
-        <div class="card-header"><%= @main_comment.customer.nickname %></div>
+        <div class="card-header fs-4"><%= @main_comment.customer.nickname %></div>
         <div class="card-body">
           <p class="card-title"><%= @main_comment.id %></p>
-          <p class="card-text"><%= @main_comment.comment %></p>
+          <p class="subtitle text-muted"><%= l @main_comment.updated_at %></p>
+          <p class="card-text fs-4"><%= @main_comment.comment %></p>
           <div class="row d-flex justify-content-end">
             <% if @main_comment.customer_id == current_customer.id %>
               <%= link_to "編集", edit_comment_path(@main_comment.id), class: "btn btn-primary btn-sm col-1 me-3" %>
@@ -30,7 +31,7 @@
           <%= f.text_area:comment, class: "form-control" %>
           <div class="row mt-5 d-flex justify-content-end">
             <%= f.submit "返信する", class: "btn btn-info col-2 me-2" %>
-            <%= link_to "キャンセル", comments_path, class: "btn btn-primary col-2" %>
+            <%= link_to "キャンセル", comment_path(@main_comment.id), class: "btn btn-primary col-2" %>
           </div>
         <% end %>
       </div>
@@ -42,6 +43,7 @@
             <%= link_to comment_path(reply.id), class: "card-title" do %>
               <%= reply.id %>
             <% end %>
+            <p class="subtitle text-muted"><%= l reply.updated_at %></p>
             <p class="card-text"><%= reply.comment %></p>
             <div class="row d-flex justify-content-end">
               <% if reply.customer_id == current_customer.id %>

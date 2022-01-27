@@ -6,14 +6,6 @@ RSpec.describe Customer, type: :model do
       expect(FactoryBot.create(:customer)).to be_valid
     end
 
-    it 'メールアドレスがなければ登録できない' do
-      expect(FactoryBot.build(:customer, email: "")).to_not be_valid
-    end
-
-    it 'パスワードがなければ登録できない' do
-      expect(FactoryBot.build(:customer, password: "")).to_not be_valid
-    end
-
     it '姓がなければ登録できない' do
       expect(FactoryBot.build(:customer, last_name: "")).to_not be_valid
     end
@@ -52,16 +44,6 @@ RSpec.describe Customer, type: :model do
 
     it '会員ステータスがなければ登録できない' do
       expect(FactoryBot.build(:customer, is_deleted: "")).to_not be_valid
-    end
-
-    it 'メールアドレスが重複していれば登録できない' do
-      create(:customer, email: "shogo@example.com")
-      expect(FactoryBot.build(:customer, email: "shogo@example.aom")).to_not be_valid
-    end
-
-    it 'パスワードが重複していれば登録できない' do
-      create(:customer, password: "123456")
-      expect(FactoryBot.build(:customer, password: "123456")).to_not be_valid
     end
 
     it '電話番号が重複していれば登録できない' do

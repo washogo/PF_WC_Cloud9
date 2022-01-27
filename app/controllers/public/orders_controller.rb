@@ -4,10 +4,16 @@ class Public::OrdersController < ApplicationController
   def new
     @order=Order.new
     @addresses=Address.where(customer_id: current_customer.id)
+    @cart_lessons=CartLesson.where(customer_id: current_customer.id)
+    if @cart_lessons.blank?
+      flash[:alert]="カートが空です。"
+      redirect_to cart_lessons_path
+    end
   end
 
   def confirmation
     @cart_lessons=CartLesson.where(customer_id: current_customer.id)
+    
     @order=Order.new
     @order.address_id=params[:order][:address_id]
     @order.payment_method=params[:order][:payment_method]

@@ -10,7 +10,7 @@ class Public::CartLessonsController < ApplicationController
   end
 
   def index
-    @cart_lessons=CartLesson.all
+    @cart_lessons=CartLesson.where(customer_id: current_customer.id)
   end
 
   def destroy

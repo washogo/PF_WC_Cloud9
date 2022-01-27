@@ -64,7 +64,6 @@ RSpec.describe "Addresses", type: :request do
   describe "DELETE /destroy" do
     it 'addressを正常に削除できる' do
       sign_in customer
-      byebug
       address=create(:address, customer_id: customer.id)
       expect{ delete "/addresses/#{address.id}" }.to change(customer.addresses, :count).by(-1)
     end

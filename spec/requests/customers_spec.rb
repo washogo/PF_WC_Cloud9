@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Customers", type: :request do
   before do
-    @customer=create(:customer)
+    @customer=create(:customer, is_deleted: true)
   end
 
   describe "public" do
@@ -112,7 +112,7 @@ RSpec.describe "Customers", type: :request do
     before do
       @admin=create(:admin)
     end
-    
+
     describe "GET /index" do
       it '正常なレスポンスである' do
         sign_in @admin
@@ -158,13 +158,15 @@ RSpec.describe "Customers", type: :request do
     describe "PATCH /update" do
       it 'customerを更新できる' do
         sign_in @admin
-        patch "/admin/customers/#{@customer.id}", params: { customer: { is_deleted: true } }
-        expect(@customer.reload.is_deleted).to eq true
+        customer=create(:customer, is_deleted: true)
+        patch "/admin/customers/#{customer.id}", params: { customer: { is_deleted: false } }
+        expect(customer.reload.is_deleted).to eq false
       end
 
       it 'customerを更新後に一覧画面に遷移する' do
         sign_in @admin
-        patch "/admin/customers/#{@customer.id}", params: { customer: { is_deleted: true } }
+        customer=create(:customer, is_deleted: true)
+        patch "/admin/customers/#{customer.id}", params: { customer: { is_deleted: false } }
         expect(response).to redirect_to admin_customers_path
       end
     end
