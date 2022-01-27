@@ -96,17 +96,17 @@ ActiveRecord::Schema.define(version: 2022_01_19_081358) do
   end
 
   create_table "lessons", force: :cascade do |t|
+    t.integer "customer_id", null: false
     t.integer "category_id", null: false
     t.string "name", null: false
     t.text "content", null: false
     t.integer "attending_style", null: false
+    t.string "access", null: false
     t.integer "contract_period", null: false
     t.integer "price", null: false
     t.boolean "is_in_lecture", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "access", null: false
-    t.integer "customer_id", null: false
   end
 
   create_table "order_details", force: :cascade do |t|
