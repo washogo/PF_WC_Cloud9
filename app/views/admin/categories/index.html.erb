@@ -4,6 +4,9 @@
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
       <h2>カテゴリー一覧</h2>
+      <% if @categories.blank? %>
+        <p>登録されていません。</p>
+      <% else %>
         <% @categories.each do |category| %>
           <%= form_with model:category, url: admin_category_path(category.id), method: :patch, local:true do |f| %>
           <div class="row mb-3">
@@ -13,6 +16,7 @@
           </div>
           <% end %>
         <% end %>
+      <% end %>
       <h2>カテゴリー登録</h2>
       <div class="row mt-5">
         <%= form_with model:@category, url: { controller: 'categories', action: 'create' }, local:true do |f| %>
