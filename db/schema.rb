@@ -63,10 +63,10 @@ ActiveRecord::Schema.define(version: 2022_01_19_081358) do
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "phone_number", null: false
-    t.string "transfer_target", null: false
-    t.string "nickname", null: false
-    t.text "profile", null: false
-    t.string "image_id", null: false
+    t.string "transfer_target"
+    t.string "nickname"
+    t.text "profile"
+    t.string "image_id"
     t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

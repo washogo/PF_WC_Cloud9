@@ -30,9 +30,9 @@
             <td><%= customer.phone_number %></td>
             <td>
               <% if customer.is_deleted %>
-                <button class="btn btn-success">有効</button>
-              <% else %>
                 <button class="btn btn-danger">無効</button>
+              <% else %>
+                <button class="btn btn-success">有効</button>
               <% end %>
             </td>
           </tr>

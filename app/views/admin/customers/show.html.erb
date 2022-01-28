@@ -20,11 +20,17 @@
           <p class="fs-4 mt-3">〒<%= @customer.full_address %></p>
           <p class="fs-4 mt-3"><%= @customer.phone_number %></p>
           <p class="fs-4 mt-3"><%= @customer.email %></p>
-          <p class="fs-4 mt-3"><%= @customer.transfer_target %></p>
-          <% if @customer.is_deleted %>
-            <button class="btn btn-success">有効</button>
+          <p class="fs-4 mt-3">
+          <% if @customer.transfer_target.blank? %>
+            未登録
           <% else %>
+            <%= @customer.transfer_target %>
+          <% end %>
+          </p>
+          <% if @customer.is_deleted %>
             <button class="btn btn-danger">無効</button>
+          <% else %>
+            <button class="btn btn-success">有効</button>
           <% end %>
         </div>
       </div>
@@ -51,7 +57,7 @@
               <td><%= have_lesson.is_in_study_i18n %></td>
               <td>
                 <% if have_lesson.lesson.contract_period == 0 %>
-                  単発のため更新なし
+                  単���のため更新なし
                 <% else %>
                   <%= l update_at_date(have_lesson.updated_at, have_lesson.lesson.contract_period) %>
                 <% end %>
