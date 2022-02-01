@@ -24,6 +24,7 @@ class Customer < ApplicationRecord
 
   with_options uniqueness: true do
     validates :phone_number
+    validates :nickname
   end
 
   validates :is_deleted, inclusion: { in: [true, false] }
