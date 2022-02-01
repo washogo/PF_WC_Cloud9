@@ -4,7 +4,7 @@
     <div class="col-8 offset-md-4">
       <h2>ログイン画面</h2>
 
-      <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name), local:true) do |f| %>
         <div class="field col-3 mt-3">
           <%= f.label :email, "メールアドレス", class: "form-label" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>

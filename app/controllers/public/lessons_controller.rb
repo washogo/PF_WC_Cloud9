@@ -10,14 +10,17 @@ class Public::LessonsController < ApplicationController
   def create
     @lesson=Lesson.new(lesson_params)
     @lesson.customer_id=current_customer.id
-    @lesson.save
-
-    if params[:lesson][:tags].present?
-      tag_list=params[:lesson][:tags][:name].split(",")
-      @lesson.save_tag(tag_list)
+    customer=current_customer
+    if @lesson.valid? && customer.transfer_target.present?
+      @lesson.save
+      if params[:lesson][:tags].present?
+        tag_list=params[:lesson][:tags][:name].split(",")
+        @lesson.save_tag(tag_list)
+      end
+      redirect_to customer_path(current_customer.id)
+    else
+      render :new
     end
-
-    redirect_to customer_path(current_customer.id)
   end
 
   def show
@@ -43,7 +46,7 @@ class Public::LessonsController < ApplicationController
       tag_list=params[:lesson][:tags][:name].split(",")
       @lesson.save_tag(tag_list)
     end
-    
+
     redirect_to customer_path(current_customer.id)
   end
 

@@ -1,0 +1,56 @@
+ja:
+  activerecord:
+    attributes:
+      address:
+        customer: 会員
+        name: 宛名
+        postal_code: 郵便番号
+        address: 住所
+      cart_lesson:
+        customer: 会員
+        lesson: 講座
+      category:
+        name: カテゴリー名
+      comment:
+        customer: 会員
+        comment: コメント
+      evaluation:
+        customer: 会員
+        lesson: 講座
+        evaluation: 評価
+        review: レビュー
+      have_lesson:
+        customer: 会員
+        lesson: 講座
+        is_in_study: 学習状況
+        progress: 進捗
+      lesson:
+        customer: 会員
+        category: カテゴリー
+        name: 講座名
+        content: 内容
+        attending_style: 受講形態
+        access: アクセス先
+        contract_period: 契約期間
+        price: 価格
+        is_in_lecture: 開講状況
+        transfer_target: 振込先
+      order_detail:
+        order: 注文
+        lesson: 講座
+        price: 購入時価格
+      order:
+        customer: 会員
+        address: 住所
+        payment_method: 支払方法
+        total_price: 総額
+        order_status: 注文ステータス
+        shipping_fee: 送料
+      reply_relationship:
+        main_comment: メインコメント
+        reply: 返信コメント
+      tag_list:
+        lesson: 講座
+        tag: 
+      tag:
+        name: タグ名

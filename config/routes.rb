@@ -18,14 +18,19 @@ Rails.application.routes.draw do
     get '/current_customer/cancel', to: 'customers#cancel'
     patch '/current_customer/quit', to: 'customers#quit'
     resources :lessons do
-      get :search, on: :collection
-      post :result, on: :collection
+      collection do
+        get :search
+        post :result
+      end
     end
     resources :cart_lessons, only:[:create, :index, :destroy]
-    resources :orders, only:[:new]
-    post '/orders/confirmation', to: 'orders#confirmation'
-    get '/orders/completed', to: 'orders#completed'
-    post '/orders/completed', to: 'orders#create'
+    resources :orders, only:[:new] do
+      collection do
+        post :confirmation
+        get :completed
+        post :create, path: 'completed'
+      end
+    end
     resources :addresses, except:[:new, :show]
     resources :have_lessons, only:[:index, :show, :update]
     resources :evaluations, only:[:new, :create, :show, :index]

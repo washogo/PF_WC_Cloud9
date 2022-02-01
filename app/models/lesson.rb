@@ -28,6 +28,14 @@ class Lesson < ApplicationRecord
     validates :contract_period
     validates :price
   end
+  
+  validate :transfer_target_presence, on: :create
+  
+  def transfer_target_presence
+    if customer.transfer_target.blank?
+      errors.add(:transfer_target, "の登録が必要です")
+    end
+  end
 
   def tax_price
     self.price * 1.1

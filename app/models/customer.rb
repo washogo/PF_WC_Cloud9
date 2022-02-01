@@ -19,11 +19,11 @@ class Customer < ApplicationRecord
     validates :postal_code
     validates :address
     validates :phone_number
+    validates :nickname
   end
 
   with_options uniqueness: true do
     validates :phone_number
-    validates :transfer_target
     validates :nickname
   end
 

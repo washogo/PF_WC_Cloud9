@@ -4,6 +4,9 @@
   <div class="row">
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
+    <% if @lesson.errors.any? %>
+      <%= render 'layouts/errors', item: @lesson %>
+    <% end %>
       <h2 class="mt-5">教えたい！</h2>
       <%= form_with model:@lesson, local:true do |f| %>
         <div class="col-5 mt-5">

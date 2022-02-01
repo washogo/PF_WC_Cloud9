@@ -5,7 +5,7 @@
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
       <h2 class="mt-5">振込先情報確認・編集画面</h2>
-      <%= form_with model:@customer, method: :patch, local:true do |f| %>
+      <%= form_with model:@customer, url: current_customer_path, method: :patch, local:true do |f| %>
         <div class="col-3 mt-5">
           <%= f.text_field:transfer_target, class: "form-control" %>
         </div>
