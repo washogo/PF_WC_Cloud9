@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     @categories=Category.all
     @tags=Tag.all
   end
-  
+
   def after_sign_in_path_for(resource)
     customer_path(resource)
   end
