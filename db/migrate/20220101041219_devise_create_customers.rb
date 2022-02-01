@@ -13,10 +13,10 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string  :postal_code,        null: false
       t.string  :address,            null: false
       t.string  :phone_number,       null: false
-      t.string  :transfer_target,    null: true
+      t.string  :transfer_target,    null: true, default: ""
       t.string  :nickname,           null: false
-      t.string  :profile,            null: true
-      t.string  :image_id,           null: true
+      t.string  :profile,            null: true, default: ""
+      t.string  :image_id,           null: true, default: ""
       t.boolean :is_deleted,         null: false, default: false
 
       ## Recoverable
