@@ -14,7 +14,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string  :address,            null: false
       t.string  :phone_number,       null: false
       t.string  :transfer_target,    null: true
-      t.string  :nickname,           null: true
+      t.string  :nickname,           null: false
       t.text    :profile,            null: true
       t.string  :image_id,           null: true
       t.boolean :is_deleted,         null: false, default: false
