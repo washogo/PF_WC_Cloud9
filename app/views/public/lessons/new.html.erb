@@ -51,9 +51,9 @@
         </div>
         <div class="col-6 mt-5">
           <%= f.label:is_in_lecture, "開講状況", class: "form-label" %></br>
-          <%= f.radio_button:is_in_lecture, true %>
-          <%= f.label:is_in_lecture, "開講中", value: true %> 
-          <%= f.radio_button:is_in_lecture, false %>
+          <%= f.radio_button:is_in_lecture, :true %>
+          <%= f.label:is_in_lecture, "開講中", value: true %>
+          <%= f.radio_button:is_in_lecture, :false %>
           <%= f.label:is_in_lecture, "準備中", value: false %>
         </div>
         <div class="row mt-5">

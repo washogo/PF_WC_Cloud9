@@ -17,7 +17,6 @@ class Lesson < ApplicationRecord
     validates :attending_style
     validates :contract_period
     validates :price
-    validates :is_in_lecture
     validates :access
   end
 
