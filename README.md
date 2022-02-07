@@ -31,7 +31,8 @@ https://app.diagrams.net/#G1HYTX6X3MFsg-mqYvUl2jDxipMxmN7nyU
 ### 詳細設計書 
 https://docs.google.com/spreadsheets/d/12DnjDBeTlLwlQ1Wg2f5YK5wqx4b1EoX6EnrvQbWLvl0/edit#gid=0
 
-## チャレンジ要素一覧
+##機能
+### チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1zCcYDWUJrLt_U1YNHM8gDEra-xxR4HY-EpiFeoCrhpM/edit#gid=0
 
 ## 開発環境
@@ -42,5 +43,4 @@ https://docs.google.com/spreadsheets/d/1zCcYDWUJrLt_U1YNHM8gDEra-xxR4HY-EpiFeoCr
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- イラストAC　https://www.ac-illust.com/
