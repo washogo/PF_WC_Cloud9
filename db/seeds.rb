@@ -11,3 +11,14 @@ Admin.create!(
   password: '123456'
 )
 
+3.times do |n|
+  email = Faker::Internet.email
+  encrypted_password = "#{n}12345"
+  last_name = Faker
+
+  User.create(
+    name: name,
+    email: email,
+    content: content
+  )
+end
