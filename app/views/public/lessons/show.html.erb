@@ -16,9 +16,9 @@
       <div class="row mt-5">
         <h5 class="col-2">開講状況</h5>
         <% if @lesson.is_in_lecture %>
-          <button class="btn btn-dark col-2">開講中</button>
+          <button class="btn btn-dark col-2"><%= is_in_lecture(@lesson.is_in_lecture) %></button>
         <% else %>
-          <button class="btn btn-light col-2">準備中</button>
+          <button class="btn btn-light col-2"><%= is_in_lecture(@lesson.is_in_lecture) %></button>
         <% end %>
       </div>
       <div class="row mt-5">

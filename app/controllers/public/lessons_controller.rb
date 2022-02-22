@@ -30,7 +30,7 @@ class Public::LessonsController < ApplicationController
   end
 
   def index
-    @lessons=Lesson.where.not(customer_id: current_customer.id)
+    @lessons=Lesson.where.not(is_in_lecture: false)
   end
 
   def edit
