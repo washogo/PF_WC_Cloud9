@@ -4,7 +4,7 @@
   <div class="row">
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
-      <h2 class="col-3 mt-5">【<%= @lesson.name %>】</h2>
+      <h2 class="col mt-5">【<%= @lesson.name %>】</h2>
       <%= form_with model:@lesson, method: :patch, local:true do |f| %>
         <div class="col-3 mt-5">
           <%= f.label:name, "講座名", class: "form-label" %>
@@ -22,7 +22,7 @@
         </div>
         <div class="col-9 mt-5">
           <%= f.fields_for:tags do |tag| %>
-            <%= tag.label:name, "タグ（カンマ , で区切って入力してください）", class: "form-label" %></br>
+            <%= tag.label:name, "タグ再登録（カンマ , で区切って入力してください）", class: "form-label" %></br>
             <p>
               <% @lesson.tag_lists.each do |tag_list| %>
                 <button class="btn btn-tag"><%= tag_list.tag.name %></button>

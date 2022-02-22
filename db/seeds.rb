@@ -205,3 +205,324 @@ Lesson.create!(
  price: 10000,
  is_in_lecture: true,
 )
+
+Lesson.create!(
+ customer_id: 3,
+ category_id: 2,
+ name: "プログラミングを知ろう！",
+ content: "プログラミングの基礎を楽しく学ぶことができます！",
+ attending_style: 0,
+ access: "https://www.google.com",
+ contract_period: 0,
+ price: 10000,
+ is_in_lecture: true,
+)
+
+Lesson.create!(
+ customer_id: 3,
+ category_id: 5,
+ name: "Ruby on Railsを学ぼう！",
+ content: "Ruby on Railsのチュートリアルを一緒にやってみましょう！",
+ attending_style: 0,
+ access: "https://www.google.com",
+ contract_period: 6,
+ price: 60000,
+ is_in_lecture: true,
+)
+
+Lesson.create!(
+ customer_id: 2,
+ category_id: 3,
+ name: "JavaScriptを楽しめ！",
+ content: "JavaScriptの基礎を学ぶための学習ロードマップを提供しています！",
+ attending_style: 0,
+ access: "https://www.google.com",
+ contract_period: 1,
+ price: 10000,
+ is_in_lecture: true,
+)
+
+Lesson.create!(
+ customer_id: 2,
+ category_id: 4,
+ name: "Reactを最速で学ぶ！",
+ content: "React.jsの使い方を学び、簡単なtodoアプリを作成しよう！",
+ attending_style: 0,
+ access: "https://www.google.com",
+ contract_period: 1,
+ price: 20000,
+ is_in_lecture: true,
+)
+
+Lesson.create!(
+ customer_id: 1,
+ category_id: 6,
+ name: "Let's enjoy English！",
+ content: "簡単な英語で自己紹介できるようになります！",
+ attending_style: 0,
+ access: "https://www.google.com",
+ contract_period: 0,
+ price: 10000,
+ is_in_lecture: true,
+)
+
+Lesson.create!(
+ customer_id: 1,
+ category_id: 7,
+ name: "Let's enjoy English！2",
+ content: "日常会話ができるようになります！",
+ attending_style: 0,
+ access: "https://www.google.com",
+ contract_period: 6,
+ price: 30000,
+ is_in_lecture: true,
+)
+
+Lesson.create!(
+ customer_id: 1,
+ category_id: 8,
+ name: "TOEIC７００点の壁をぶっ壊す！",
+ content: "TOEICで７００点取得を目指している方を対象とした講座です。",
+ attending_style: 0,
+ access: "https://www.google.com",
+ contract_period: 6,
+ price: 60000,
+ is_in_lecture: false,
+)
+
+Lesson.create!(
+ customer_id: 1,
+ category_id: 7,
+ name: "Let's enjoy English！3",
+ content: "ビジネス英語ができるようになります！",
+ attending_style: 0,
+ access: "https://www.google.com",
+ contract_period: 6,
+ price: 30000,
+ is_in_lecture: true,
+)
+
+Tag.create!(
+ name: "Ruby" 
+)
+
+Tag.create!(
+ name: "Ruby on Rails" 
+)
+
+Tag.create!(
+ name: "プログラミング初心者" 
+)
+
+Tag.create!(
+ name: "プログラミング教育" 
+)
+
+Tag.create!(
+ name: "HTML" 
+)
+
+Tag.create!(
+ name: "CSS" 
+)
+
+Tag.create!(
+ name: "VScode" 
+)
+
+Tag.create!(
+ name: "JavaScript"
+)
+
+Tag.create!(
+ name: "React.js"
+)
+
+Tag.create!(
+ name: "Next.js"
+)
+
+Tag.create!(
+ name: "jQuery"
+)
+
+Tag.create!(
+ name: "英語学習"
+)
+
+Tag.create!(
+ name: "海外留学"
+)
+
+Tag.create!(
+ name: "English"
+)
+
+Tag.create!(
+ name: "ビジネス英語"
+)
+
+Tag.create!(
+ name: "英語教育"
+)
+
+Tag.create!(
+ name: "オールイングリッシュ"
+)
+
+Tag.create!(
+ name: "TOEIC"
+)
+
+TagList.create!(
+ lesson_id: 1,
+ tag_id: 1,
+)
+
+TagList.create!(
+ lesson_id: 1,
+ tag_id: 3,
+)
+
+TagList.create!(
+ lesson_id: 1,
+ tag_id: 7,
+)
+
+TagList.create!(
+ lesson_id: 2,
+ tag_id: 3,
+)
+
+TagList.create!(
+ lesson_id: 2,
+ tag_id: 4,
+)
+
+TagList.create!(
+ lesson_id: 2,
+ tag_id: 5,
+)
+
+TagList.create!(
+ lesson_id: 2,
+ tag_id: 6,
+)
+
+TagList.create!(
+ lesson_id: 3,
+ tag_id: 1,
+)
+
+TagList.create!(
+ lesson_id: 3,
+ tag_id: 2,
+)
+
+TagList.create!(
+ lesson_id: 4,
+ tag_id: 8,
+)
+
+TagList.create!(
+ lesson_id: 4,
+ tag_id: 11,
+)
+
+TagList.create!(
+ lesson_id: 4,
+ tag_id: 7,
+)
+
+TagList.create!(
+ lesson_id: 5,
+ tag_id: 8,
+)
+
+TagList.create!(
+ lesson_id: 5,
+ tag_id: 9,
+)
+
+TagList.create!(
+ lesson_id: 5,
+ tag_id: 10,
+)
+
+TagList.create!(
+ lesson_id: 5,
+ tag_id: 7,
+)
+
+TagList.create!(
+ lesson_id: 6,
+ tag_id: 12,
+)
+
+TagList.create!(
+ lesson_id: 6,
+ tag_id: 14,
+)
+
+TagList.create!(
+ lesson_id: 6,
+ tag_id: 16,
+)
+
+TagList.create!(
+ lesson_id: 6,
+ tag_id: 17,
+)
+
+TagList.create!(
+ lesson_id: 7,
+ tag_id: 12,
+)
+
+TagList.create!(
+ lesson_id: 7,
+ tag_id: 13,
+)
+
+TagList.create!(
+ lesson_id: 7,
+ tag_id: 17,
+)
+
+TagList.create!(
+ lesson_id: 7,
+ tag_id: 18,
+)
+
+TagList.create!(
+ lesson_id: 8,
+ tag_id: 18,
+)
+
+TagList.create!(
+ lesson_id: 8,
+ tag_id: 13,
+)
+
+TagList.create!(
+ lesson_id: 9,
+ tag_id: 12,
+)
+
+TagList.create!(
+ lesson_id: 9,
+ tag_id: 15,
+)
+
+TagList.create!(
+ lesson_id: 9,
+ tag_id: 17,
+)
+
+HaveLesson.create!(
+
+)
+
+Evaluation.create!(
+
+)
