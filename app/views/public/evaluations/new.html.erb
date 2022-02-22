@@ -6,6 +6,9 @@
     <div class="col-9 offset-md-1">
       <h2 class="mt-5">評価作成</h2>
       <%= form_with model:@evaluation, local:true do |f| %>
+      <% if @evaluation.errors.any? %>
+        <%= render 'layouts/errors', item: @evaluation %>
+      <% end %>
       <div class="col-3 fs-5 mt-5">
         <%= f.label:evaluation, "評価度", class: "form-label" %>
         <%= f.select:evaluation, [["⭐️", 1], ["⭐️⭐️", 2], ["⭐️⭐⭐️", 3],["⭐️⭐⭐️⭐", 4], ["⭐️⭐⭐️⭐⭐️", 5]], prompt: "選択してください" %>

@@ -5,7 +5,7 @@
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
     <div class="col-9 offset-md-1">
       <h2 class="mt-5">学び詳細画面</h2>
-      <h3 class="col-3 mt-5">【<%= @have_lesson.lesson.name %>】</h3>
+      <h3 class="col mt-5">【<%= @have_lesson.lesson.name %>】</h3>
       <%= form_with model:@have_lesson, method: :patch, local:true do |f| %>
       <div class="row mt-5">
         <div class="col-4">
@@ -27,13 +27,13 @@
         </div>
         <div class="col-3">
           <h4>カテゴリー</h4>
-          <p class="fs-5 border ms-3"><%= @have_lesson.lesson.category.name %></p>
+          <button class="btn btn-category ms-3"><%= @have_lesson.lesson.category.name %></botton>
         </div>
         <div class="col-5">
           <h4>タグ</h4>
           <p class="fs-5 ms-3">
             <% @have_lesson.lesson.tags.each do |tag| %>
-              <button class="btn btn-success m-1"><%= tag.name %></button>
+              <button class="btn btn-tag m-1"><%= tag.name %></button>
             <% end %>
           </p>
         </div>

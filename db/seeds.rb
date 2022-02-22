@@ -520,9 +520,86 @@ TagList.create!(
 )
 
 HaveLesson.create!(
+ customer_id: 1,
+ lesson_id: 1,
+ is_in_study: 2,
+ progress: 100,
+)
 
+HaveLesson.create!(
+ customer_id: 1,
+ lesson_id: 2,
+ is_in_study: 2,
+ progress: 100,
+)
+
+HaveLesson.create!(
+ customer_id: 1,
+ lesson_id: 3,
+ is_in_study: 1,
+ progress: 30,
+)
+
+HaveLesson.create!(
+ customer_id: 2,
+ lesson_id: 6,
+ is_in_study: 2,
+ progress: 100,
+)
+
+HaveLesson.create!(
+ customer_id: 2,
+ lesson_id: 7,
+ is_in_study: 2,
+ progress: 100,
+)
+
+HaveLesson.create!(
+ customer_id: 2,
+ lesson_id: 8,
+ is_in_study: 1,
+ progress: 50,
+)
+
+HaveLesson.create!(
+ customer_id: 3,
+ lesson_id: 4,
+ is_in_study: 0,
+ progress: 0,
+)
+
+HaveLesson.create!(
+ customer_id: 3,
+ lesson_id: 5,
+ is_in_study: 0,
+ progress: 0,
 )
 
 Evaluation.create!(
-
+ customer_id: 1,
+ lesson_id: 1,
+ evaluation: 3,
+ review: "とても良かったです！",
 )
+
+Evaluation.create!(
+ customer_id: 1,
+ lesson_id: 2,
+ evaluation: 4,
+ review: "最高に良かったです！",
+)
+
+Evaluation.create!(
+ customer_id: 2,
+ lesson_id: 6,
+ evaluation: 3,
+ review: "とても楽しく学べました！",
+)
+
+Evaluation.create!(
+ customer_id: 2,
+ lesson_id: 7,
+ evaluation: 4,
+ review: "英語に自信が持てるようになりました！",
+)
+

@@ -7,10 +7,17 @@ class Public::EvaluationsController < ApplicationController
 
   def create
     @evaluation=Evaluation.new(evaluation_params)
-    @evaluation.lesson_id=params[:evaluation][:lesson_id]
+    lesson_id=params[:evaluation][:lesson_id]
+    @evaluation.lesson_id=lesson_id
     @evaluation.customer_id=current_customer.id
-    @evaluation.save
-    redirect_to have_lessons_path
+
+    if @evaluation.valid?
+      @evaluation.save
+      redirect_to have_lessons_path
+    else
+      render :new 
+    end
+
   end
 
   def show

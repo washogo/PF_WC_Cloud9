@@ -17,7 +17,7 @@ ja:
       evaluation:
         customer: 会員
         lesson: 講座
-        evaluation: 評価
+        evaluation: 評価度
         review: レビュー
       have_lesson:
         customer: 会員
