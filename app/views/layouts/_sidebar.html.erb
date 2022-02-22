@@ -7,7 +7,7 @@
         <div class="collapse ms-1" id="category-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <% categories.each do |category| %>
-            <li class="m-3"><%= category.name %>(<%= category.lessons.count %>)</li>
+            <li class="m-3"><%= category.name %>(<%= category.lessons.where(is_in_lecture: true).count %>)</li>
           <% end %>
           </ul>
         </div>
