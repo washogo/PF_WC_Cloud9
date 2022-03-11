@@ -37,9 +37,12 @@ class Public::OrdersController < ApplicationController
       @cart_lessons.each do |cart_lesson|
         OrderDetail.create(order_id: @order.id, lesson_id: cart_lesson.lesson.id, price: cart_lesson.lesson.tax_price )
         HaveLesson.create(customer_id: current_customer.id, lesson_id: cart_lesson.lesson.id)
+        @lesson=Lesson.find(cart_lesson.lesson.id)
+        @customer=Customer.find(@lesson.customer.id)
+        AnnounceMailer.with(lesson: @lesson, customer: @lesson.customer).send_mail.deliver
       end
       @cart_lessons.destroy_all
-      redirect_to orders_completed_path
+      redirect_to completed_orders_path
     end
   end
 
