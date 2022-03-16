@@ -48,7 +48,8 @@ https://docs.google.com/spreadsheets/d/1zCcYDWUJrLt_U1YNHM8gDEra-xxR4HY-EpiFeoCr
 - 言語：HTML,CSS,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- 開発環境：Cloud9
+- 本番環境:EC2,NGINX,Puma
 - DB:MySQL
 
 ## 使用素材
