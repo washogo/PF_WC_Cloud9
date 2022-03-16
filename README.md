@@ -49,6 +49,7 @@ https://docs.google.com/spreadsheets/d/1zCcYDWUJrLt_U1YNHM8gDEra-xxR4HY-EpiFeoCr
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - 開発環境：Cloud9
+- テスト:RSpec
 - 本番環境:EC2,NGINX,Puma
 - DB:MySQL
 
