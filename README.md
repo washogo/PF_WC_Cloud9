@@ -45,13 +45,16 @@ https://docs.google.com/spreadsheets/d/1zCcYDWUJrLt_U1YNHM8gDEra-xxR4HY-EpiFeoCr
 
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,Ruby,SQL
+- 言語：HTML,CSS,Ruby,SQL,JavaScript
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - 開発環境：Cloud9
 - テスト:RSpec
-- 本番環境:EC2,NGINX,Puma
-- DB:MySQL
+
+## インフラ、その他
+- AWS:EC2,RDS(MySQL)
+- webサーバー:NGINX
+- アプリケーションサーバー:Puma
 
 ## 使用素材
 - イラストAC　https://www.ac-illust.com/
