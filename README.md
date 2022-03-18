@@ -40,8 +40,6 @@ https://docs.google.com/spreadsheets/d/12DnjDBeTlLwlQ1Wg2f5YK5wqx4b1EoX6EnrvQbWL
 - 講座検索
 - ユーザー間コミュニケーション機能
 - 講座注文時のメール通知機能
-### チャレンジ要素一覧
-https://docs.google.com/spreadsheets/d/1zCcYDWUJrLt_U1YNHM8gDEra-xxR4HY-EpiFeoCrhpM/edit#gid=0
 
 ## 開発環境
 - OS：Linux(CentOS)
