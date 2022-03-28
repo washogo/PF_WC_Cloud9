@@ -27,9 +27,9 @@ class Lesson < ApplicationRecord
     validates :contract_period
     validates :price
   end
-  
+
   validate :transfer_target_presence, on: :create
-  
+
   def transfer_target_presence
     if customer.transfer_target.blank?
       errors.add(:transfer_target, "の登録が必要です")
@@ -48,14 +48,14 @@ class Lesson < ApplicationRecord
 
     old_tags.each do |old|
       old_tag=Tag.find_by(name: old)
-      old_tag_list=self.tag_lists.where(tag_id: old_tag.id).find_by(tag_id: old_tag.id)
+      old_tag_list=TagList.find_by(tag_id: old_tag.id, lesson_id: self.id)
       
-      if TagList.where(tag_id: old_tag.id).count == 1
-        old_tag.delete
+      if TagList.where(tag_id: old_tag.id).length > 1
+        old_tag_list.delete
       else
+        old_tag.delete
         old_tag_list.delete
       end
-
     end
 
     new_tags.each do |new|

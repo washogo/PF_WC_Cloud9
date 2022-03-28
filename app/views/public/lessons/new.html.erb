@@ -25,7 +25,7 @@
         </div>
         <div class="col-9 mt-5">
           <%= f.fields_for:tags do |tag| %>
-            <%= f.label:name, "タグ（カンマで区切って入力してください）", class: "form-label" %></br>
+            <%= f.label:name, "タグ（カンマ , で区切って入力してください）", class: "form-label" %></br>
             <%= tag.text_area:name, class: "form-control" %>
           <% end %>
         </div>
