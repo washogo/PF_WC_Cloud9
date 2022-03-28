@@ -31,16 +31,28 @@ https://app.diagrams.net/#G1HYTX6X3MFsg-mqYvUl2jDxipMxmN7nyU
 ### 詳細設計書 
 https://docs.google.com/spreadsheets/d/12DnjDBeTlLwlQ1Wg2f5YK5wqx4b1EoX6EnrvQbWLvl0/edit#gid=0
 
-##機能
-### チャレンジ要素一覧
-https://docs.google.com/spreadsheets/d/1zCcYDWUJrLt_U1YNHM8gDEra-xxR4HY-EpiFeoCrhpM/edit#gid=0
+## 機能
+- 管理者権限
+- ユーザー認証
+- CRUD処理
+- 講座作成
+- 講座注文
+- 講座検索
+- ユーザー間コミュニケーション機能
+- 講座注文時のメール通知機能
 
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,Ruby,SQL
+- 言語：HTML,CSS,Ruby,SQL,JavaScript
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- 開発環境：Cloud9
+- テスト:RSpec
+
+## インフラ、その他
+- AWS:EC2,RDS(MySQL)
+- webサーバー:NGINX
+- アプリケーションサーバー:Puma
 
 ## 使用素材
 - イラストAC　https://www.ac-illust.com/
