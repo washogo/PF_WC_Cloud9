@@ -71,7 +71,6 @@ class Public::LessonsController < ApplicationController
       tag_ids.each do |tag_id|
         @tag_lists=@tag_lists.or(TagList.where(tag_id: tag_id))
       end
-
       @tag_lists.each do |tag_list|
         @lessons=@lessons.or(Lesson.where('id = ?' ,tag_list.lesson_id))
       end
@@ -79,7 +78,6 @@ class Public::LessonsController < ApplicationController
 
     @search_params=lesson_search_params
     @lessons=@lessons.search(@search_params)
-
   end
 
   private
