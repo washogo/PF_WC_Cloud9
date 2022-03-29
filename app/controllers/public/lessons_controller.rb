@@ -63,8 +63,9 @@ class Public::LessonsController < ApplicationController
 
   def result
     @lessons=Lesson.none
-
-    if params[:search][:tags]
+    @search_params=lesson_search_params
+    
+    if params[:search][:tags].length > 1
       @tag_lists=TagList.none
       tag_ids=params[:search][:tags].select(&:present?)
 
@@ -74,10 +75,10 @@ class Public::LessonsController < ApplicationController
       @tag_lists.each do |tag_list|
         @lessons=@lessons.or(Lesson.where('id = ?' ,tag_list.lesson_id))
       end
+      @lessons=@lessons.search(@search_params)
+    else
+      @lessons=Lesson.search(@search_params)
     end
-
-    @search_params=lesson_search_params
-    @lessons=@lessons.search(@search_params)
   end
 
   private
