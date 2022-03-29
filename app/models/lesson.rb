@@ -2,12 +2,12 @@ class Lesson < ApplicationRecord
   belongs_to :category
   belongs_to :customer
 
-  has_many :tag_lists
+  has_many :tag_lists, dependent: :destroy
   has_many :tags, through: :tag_lists
-  has_many :evaluations
-  has_many :cart_lessons
-  has_many :order_details
-  has_many :have_lessons
+  has_many :evaluations, dependent: :destroy
+  has_many :cart_lessons, dependent: :destroy
+  has_many :order_details, dependent: :destroy
+  has_many :have_lessons, dependent: :destroy
 
   enum attending_style: { online: 0, offline: 1 }
 
