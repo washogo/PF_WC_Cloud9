@@ -3,6 +3,7 @@
 ## サイト概要
 
 - 学習マッチングアプリ
+- 機能は随時追加更新していきます
 
 ### サイトテーマ
 - 学びたい人と教えたい人とのマッチングを行う
@@ -31,20 +32,25 @@ https://app.diagrams.net/#G1HYTX6X3MFsg-mqYvUl2jDxipMxmN7nyU
 ### 詳細設計書 
 https://docs.google.com/spreadsheets/d/12DnjDBeTlLwlQ1Wg2f5YK5wqx4b1EoX6EnrvQbWLvl0/edit#gid=0
 
-## 機能
-- 管理者権限
-- ユーザー認証
-- CRUD処理
-- 講座作成
-- 講座注文
-- 講座検索
-- ユーザー間コミュニケーション機能
-- 講座注文時のメール通知機能
+## 実装機能(随時追加更新していきます)
+- [x] 管理者権限
+- [x] ユーザー認証
+- [x] CRUD処理
+- [x] 講座作成
+- [x] 講座注文
+- [x] 講座検索
+- [x] ユーザー間コミュニケーション機能
+- [x] 講座注文時のメール通知機能
+- [ ] sns認証
+- [ ] google calendar apiでスケジュール及びタスク管理を行う機能
+- [ ] 機能は据え置きで、Ruby on Railsでweb apiを作成し、React.jsでapiを叩いて表示する。CSSフレームワークはChakra-UiかTailwindCSSを使用予定。
+- [ ] 決済システム
 
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,Ruby,SQL,JavaScript
-- フレームワーク：Ruby on Rails
+- サーバーサイドフレームワーク：Ruby on Rails
+- CSSフレームワーク：Bootstrap
 - JSライブラリ：jQuery
 - 開発環境：Cloud9
 - テスト:RSpec
