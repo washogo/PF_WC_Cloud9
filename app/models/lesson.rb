@@ -28,11 +28,11 @@ class Lesson < ApplicationRecord
     validates :price
   end
 
-  validate :transfer_target_presence, on: :create
+  validate :payment_methods_presence, on: :create
 
-  def transfer_target_presence
-    if customer.transfer_target.blank?
-      errors.add(:transfer_target, "の登録が必要です")
+  def payment_methods_presence
+    if customer.payment_methods.blank?
+      errors.add(:method, "が必要です")
     end
   end
 

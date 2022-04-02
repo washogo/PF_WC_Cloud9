@@ -25,14 +25,6 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-        last_name: 姓
-        first_name: 名
-        last_name_kana: セイ
-        first_name_kana: メイ
-        postal_code: 郵便番号
-        address: 住所
-        phone_number: 電話番号
-        transfer_target: 振込先
         nickname: ニックネーム
         profile: プロフィール
         image: プロフィール画像

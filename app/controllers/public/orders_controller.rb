@@ -4,6 +4,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order=Order.new
     @addresses=Address.where(customer_id: current_customer.id)
+    @payment_methods=PaymentMethod.where(customer_id: current_customer.id)
     @cart_lessons=CartLesson.where(customer_id: current_customer.id)
     if @cart_lessons.blank?
       flash[:alert]="カートが空です"
@@ -15,9 +16,16 @@ class Public::OrdersController < ApplicationController
     @cart_lessons=CartLesson.where(customer_id: current_customer.id)
     @order=Order.new
     @order.address_id=params[:order][:address_id]
-    @order.payment_method=params[:order][:payment_method]
-    if params[:order][:address_id].blank?
-      flash[:alert]="配送先情報が必要です"
+    @order.payment_method_id=params[:order][:payment_method_id]
+    byebug
+    if params[:order][:address_id].blank? && params[:order][:address_id].blank?
+      flash[:alert]="配送先と支払方法が必要です"
+      redirect_to new_order_path
+    elsif params[:order][:address_id].blank?
+      flash[:alert]="配送先が必要です"
+      redirect_to new_order_path
+    elsif params[:order][:address_id].blank?
+      flash[:alert]="支払方法が必要です"
       redirect_to new_order_path
     end
   end
@@ -31,6 +39,7 @@ class Public::OrdersController < ApplicationController
     @order.shipping_fee=params[:order][:shipping_fee]
     @order.total_price=params[:order][:total_price]
     @order.address_id=params[:order][:address_id]
+    @order.payment_method_id=params[:order][:payment_method_id]
     @cart_lessons=CartLesson.where(customer_id: current_customer.id)
 
     if @order.save

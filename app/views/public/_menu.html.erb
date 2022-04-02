@@ -21,7 +21,7 @@
     <div class="col-3 offset-md-4">
       <ul class="menu-box ms-4">
         <li class="menu-4">
-          <%= link_to "振込先情報確認・変更", current_customer_transfer_path, class: "link" %>
+          <%= link_to "支払方法", payment_methods_path, class: "link" %>
         </li>
         <li class="menu-5">
           <%= link_to "講座新規作成", new_lesson_path, class: "link" %>
@@ -43,4 +43,4 @@
     </div>
   </div>
 </nav>
-<%= render 'layouts/notifications' %>
+<%= render 'layouts/flash' %>

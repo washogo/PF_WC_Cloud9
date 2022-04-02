@@ -1,0 +1,49 @@
+<%= render 'public/after_sign_in_nav', customer: current_customer %>
+<%= render 'public/menu' %>
+<div class="container">
+  <div class="row">
+    <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
+    <div class="col-9 offset-md-1">
+      <h2 class="mt-5">支払方法確認・変更画面</h2>
+      <%= form_with model:@payment_method, method: :post, local:true do |f| %>
+        <div class="mt-5 fs-5">
+          <%= f.radio_button:method, "credit_card", class: "form-check-input" %>
+          <%= f.label:method, "クレジットカード", value: "credit_card", class: "form-check-label" %>
+        </div>
+        <div class="mt-5 fs-5">
+          <%= f.radio_button:method, "bank_transfer", class: "form-check-input" %>
+          <%= f.label:method, "銀行振込", value: "bank_transfer", class: "form-check-label" %>
+        </div>
+        <div class="row mt-5">
+
+          <%= f.submit "登録する", class: "btn btn-primary col-2 me-5" %>
+
+          <%= link_to "キャンセル", root_path, class: "btn btn-info col-2" %>
+        </div>
+      <% end %>
+      <h2 class="mt-5">支払方法一覧</h2>
+      <% if @payment_methods.present? %>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>支払方法</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @payment_methods.each do |payment_method| %>
+            <tr>
+              <td><%= payment_method.method_i18n %></td>
+              <td>
+                <%= link_to "削除", payment_method_path(payment_method.id), method: :delete, class: "btn btn-danger" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        
+      <% end %>
+    </div>
+  </div>
+</div>

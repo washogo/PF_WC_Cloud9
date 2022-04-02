@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_081358) do
+ActiveRecord::Schema.define(version: 2022_04_02_030945) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id", null: false
@@ -56,14 +56,6 @@ ActiveRecord::Schema.define(version: 2022_01_19_081358) do
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.string "postal_code", null: false
-    t.string "address", null: false
-    t.string "phone_number", null: false
-    t.string "transfer_target", default: ""
     t.string "nickname", null: false
     t.string "profile", default: ""
     t.string "image_id", default: ""
@@ -120,12 +112,19 @@ ActiveRecord::Schema.define(version: 2022_01_19_081358) do
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "address_id", null: false
-    t.integer "payment_method", default: 0, null: false
+    t.integer "payment_method_id", null: false
+    t.integer "shipping_fee", default: 500, null: false
     t.integer "total_price", null: false
     t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "shipping_fee", null: false
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "method", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reply_relationships", force: :cascade do |t|
