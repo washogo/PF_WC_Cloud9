@@ -46,12 +46,13 @@
       </div>
       <div class="row mt-5">
         <h4>【支払方法】</h4>
-        <p class="fs-5 ms-4"><%= @order.payment_method_i18n %></p>
+        <p class="fs-5 ms-4"><%= @order.payment_method.method_i18n %></p>
       </div>
       <%= form_with model:@order, url: { controller: 'orders', action: 'create' }, local:true do |f| %>
         <%= f.hidden_field:shipping_fee, :value => shipping_fee %>
         <%= f.hidden_field:total_price, :value => total_price(@cart_lessons).to_i + shipping_fee %>
         <%= f.hidden_field:address_id, :value => @order.address.id %>
+        <%= f.hidden_field:payment_method_id, :value => @order.payment_method.id %>
         <div class="col mt-5 offset-md-4">
           <%= f.submit "注文する", class: "btn btn-info btn-lg me-2" %>
           <%= link_to "修正する", new_order_path, class: "btn btn-primary btn-lg" %>

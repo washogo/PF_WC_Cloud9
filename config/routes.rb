@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     resources :customers, only:[:show]
     get '/current_customer/unique', to: 'customers#unique'
     get '/current_customer/personal', to: 'customers#personal'
-    get '/current_customer/transfer', to: 'customers#transfer'
     patch '/current_customer', to: 'customers#update'
     get '/current_customer/cancel', to: 'customers#cancel'
     patch '/current_customer/quit', to: 'customers#quit'
@@ -35,7 +34,7 @@ Rails.application.routes.draw do
     resources :have_lessons, only:[:index, :show, :update]
     resources :evaluations, only:[:new, :create, :show, :index]
     resources :comments
-
+    resources :payment_methods, except:[:new, :show, :edit, :update]
   end
 
   namespace :admin do

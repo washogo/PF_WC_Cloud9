@@ -34,7 +34,7 @@ ja:
         contract_period: 契約期間
         price: 価格
         is_in_lecture: 開講状況
-        transfer_target: 振込先
+        method: 支払方法
       order_detail:
         order: 注文
         lesson: 講座
@@ -42,7 +42,6 @@ ja:
       order:
         customer: 会員
         address: 住所
-        payment_method: 支払方法
         total_price: 総額
         order_status: 注文ステータス
         shipping_fee: 送料
@@ -54,3 +53,5 @@ ja:
         tag: タグ
       tag:
         name: タグ名
+      payment_method:
+        method: 支払方法

@@ -20,14 +20,18 @@
         <% end %>
       <% end %>
       <h3 class="mt-5">支払方法</h3>
-      <div class="mt-5 fs-5">
-        <%= f.radio_button:payment_method, "credit_card", class: "form-check-input" %>
-        <%= f.label:payment_method, "クレジットカード", value: "credit_card", class: "form-check-label" %>
-      </div>
-      <div class="mt-5 fs-5">
-        <%= f.radio_button:payment_method, "bank_transfer", class: "form-check-input" %>
-        <%= f.label:payment_method, "銀行振込", value: "bank_transfer", class: "form-check-label" %>
-      </div>
+      <% if @payment_methods.blank? %>
+        <%= link_to "支払方法を登録する", payment_methods_path, class: "btn btn-warning m-5" %>
+      <% else %>
+        <% @payment_methods.each do |payment_method| %>
+          <div class="row mt-5">
+            <div class="fs-5">
+              <%=f.radio_button:payment_method_id, payment_method.id, class: "form-check-input" %>
+              <%=f.label:payment_method_id, "#{payment_method.method_i18n}", value: payment_method.id, class: "form-check-label" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
       <div class="row mt-5">
         <%= f.submit "注文確認画面へ", class: "btn btn-info col-2 me-3" %>
         <%= link_to "カートに戻る", cart_lessons_path, class: "btn btn-primary col-2" %>

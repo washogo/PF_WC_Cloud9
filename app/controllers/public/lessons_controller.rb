@@ -1,5 +1,5 @@
 class Public::LessonsController < ApplicationController
-  before_action :authenticate_customer!, except:[:search, :result]
+  before_action :authenticate_customer!, except:[:search, :result, :index]
 
   def new
     @lesson=Lesson.new
@@ -11,7 +11,7 @@ class Public::LessonsController < ApplicationController
     @lesson=Lesson.new(lesson_params)
     @lesson.customer_id=current_customer.id
     customer=current_customer
-    if @lesson.valid? && customer.transfer_target.present?
+    if @lesson.valid? && customer.payment_methods.present?
       @lesson.save
       if params[:lesson][:tags].present?
         tag_list=params[:lesson][:tags][:name].split(",")
