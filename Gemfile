@@ -72,6 +72,13 @@ gem 'jquery-rails'
 
 # deviseの導入
 gem 'devise'
+gem 'omniauth-rails_csrf_protection'
+# google認証
+gem 'omniauth-google-oauth2'
+# facebook認証
+gem 'omniauth-facebook'
+# twitter認証
+gem 'omniauth-twitter'
 
 # refileの導入
 gem "refile", require: "refile/rails", github: 'manfe/refile'

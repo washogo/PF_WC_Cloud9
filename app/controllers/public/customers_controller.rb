@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except:[:show]
 
-  def unique
+  def profile
     @customer=current_customer
   end
 
@@ -9,14 +9,6 @@ class Public::CustomersController < ApplicationController
     @customer=Customer.find(params[:id])
     @have_lessons=HaveLesson.where(customer_id: @customer.id)
     @lessons=Lesson.where(customer_id: @customer.id)
-  end
-
-  def personal
-    @customer=current_customer
-  end
-
-  def transfer
-    @customer=current_customer
   end
 
   def update
@@ -39,7 +31,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :phone_number, :nickname, :profile, :image, :transfer_target, :is_deleted)
+    params.require(:customer).permit(:nickname, :profile, :image, :is_deleted)
   end
 
 

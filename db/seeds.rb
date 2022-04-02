@@ -77,36 +77,51 @@ Address.create!(
  address: "福岡県福岡市博多区３丁目",
 )
 
-Category.create!(
- name: "Ruby" 
+PaymentMethod.create!(
+ customer_id: 1,
+ method: 1,
+)
+
+PaymentMethod.create!(
+ customer_id: 2,
+ method: 1,
+)
+
+PaymentMethod.create!(
+ customer_id: 3,
+ method: 0,
 )
 
 Category.create!(
- name: "プログラミング" 
+ name: "Ruby"
 )
 
 Category.create!(
- name: "JavaScript" 
+ name: "プログラミング"
 )
 
 Category.create!(
- name: "React.js" 
+ name: "JavaScript"
 )
 
 Category.create!(
- name: "Ruby on Rails" 
+ name: "React.js"
 )
 
 Category.create!(
- name: "英語" 
+ name: "Ruby on Rails"
 )
 
 Category.create!(
- name: "英会話" 
+ name: "英語"
 )
 
 Category.create!(
- name: "TOEIC" 
+ name: "英会話"
+)
+
+Category.create!(
+ name: "TOEIC"
 )
 
 Comment.create!(
@@ -303,31 +318,31 @@ Lesson.create!(
 )
 
 Tag.create!(
- name: "Ruby" 
+ name: "Ruby"
 )
 
 Tag.create!(
- name: "Ruby on Rails" 
+ name: "Ruby on Rails"
 )
 
 Tag.create!(
- name: "プログラミング初心者" 
+ name: "プログラミング初心者"
 )
 
 Tag.create!(
- name: "プログラミング教育" 
+ name: "プログラミング教育"
 )
 
 Tag.create!(
- name: "HTML" 
+ name: "HTML"
 )
 
 Tag.create!(
- name: "CSS" 
+ name: "CSS"
 )
 
 Tag.create!(
- name: "VScode" 
+ name: "VScode"
 )
 
 Tag.create!(

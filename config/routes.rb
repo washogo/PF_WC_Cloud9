@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   devise_for :customers, path: 'customers', controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions',
-    passwords: 'public/passwords'
+    passwords: 'public/passwords',
+    omniauth_callbacks: 'public/omniauth_callbacks'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope module: :public do
     root to: 'homes#top'
     resources :customers, only:[:show]
-    get '/current_customer/unique', to: 'customers#unique'
-    get '/current_customer/personal', to: 'customers#personal'
+    get '/current_customer/profile', to: 'customers#profile'
     patch '/current_customer', to: 'customers#update'
     get '/current_customer/cancel', to: 'customers#cancel'
     patch '/current_customer/quit', to: 'customers#quit'
