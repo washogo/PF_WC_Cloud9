@@ -1,11 +1,11 @@
 <%- if controller_name != 'sessions' %>
 <div class="mt-3">
-  <%= link_to "会員登録がお済みのお客様", new_session_path(resource_name), class: "link-primary"%><br />
+  <%= link_to "会員登録がお済みですか？", new_session_path(resource_name), class: "btn btn-warning"%><br />
 </div>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "会員登録をしていないお客様", new_registration_path(resource_name), class: "link-info" %><br />
+  <%= link_to "会員登録をしていませんか？", new_registration_path(resource_name), class: "btn btn-warning" %><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
@@ -22,6 +22,8 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />
+    <% if provider == :google_oauth2 %>
+      <%= link_to "Googleでログイン", omniauth_authorize_path(resource_name, provider), method: :post, class: "btn btn-danger mt-3" %><br />
+    <% end %>
   <% end %>
 <% end %>

@@ -27,4 +27,32 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def after_omniauth_failure_path_for(scope)
   #   super(scope)
   # end
+
+  def google_oauth2
+    callback_for(:google)
+  end
+
+  def facebook
+    callback_for(:facebook)
+  end
+
+  def twitter
+    callback_for(:twitter)
+  end
+
+  def callback_for(provider)
+    @customer = Customer.from_omniauth(request.env["omniauth.auth"])
+    if @customer.persisted?
+      sign_in_and_redirect @customer, event: :authentication
+      set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
+    else
+      session["devise.#{provider}_data"] = request.env["omniauth.auth"].except(:extra)
+      redirect_to new_customer_registration_path
+    end
+  end
+
+  def failure
+    redirect_to root_path
+  end
+
 end
