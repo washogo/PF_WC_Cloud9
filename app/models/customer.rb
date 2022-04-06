@@ -26,5 +26,4 @@ class Customer < ApplicationRecord
       customer.password = Devise.friendly_token[0,20]
     end
   end
-  byebug
 end
