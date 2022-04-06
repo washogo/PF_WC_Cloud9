@@ -115,11 +115,11 @@ ActiveRecord::Schema.define(version: 2022_04_02_061259) do
     t.integer "customer_id", null: false
     t.integer "address_id", null: false
     t.integer "payment_method_id", null: false
-    t.integer "shipping_fee", default: 500, null: false
     t.integer "total_price", null: false
     t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "shipping_fee", null: false
   end
 
   create_table "payment_methods", force: :cascade do |t|
