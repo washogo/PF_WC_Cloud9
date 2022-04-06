@@ -1,6 +1,5 @@
 class RemoveShippingFeeOnAddresses < ActiveRecord::Migration[5.2]
-  def up
+  def change
     remove_column :addresses, :shipping_fee, :integer
-    change_column :orders, :shipping_fee, :integer, null: false
   end
 end
