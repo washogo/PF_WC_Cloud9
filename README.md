@@ -8,6 +8,7 @@
 - ３月１８日、「お名前.com」とRoute53を使用してドメインの取得を行いました。
 - ３月２９日、タグ付け機能と検索機能のバグを修正しました。
 - SNS認証のためにhttpからhttpsへ変更中
+- 変更過程でインターネット接続の不具合発生のため、再度ec2インスタンスを作成しデプロイ
 
 ## 今後の展望
 - 今後は、sns認証を追加し、googleのcalendar apiを導入して、タスク管理を実装します。
@@ -38,7 +39,7 @@
 https://docs.google.com/spreadsheets/d/1CY7PtCUNArmCF8RdCtsjK4dsRwJJTxydyFswzWU0LJ4/edit#gid=1960613479
 ### ER図
 https://app.diagrams.net/#G1HYTX6X3MFsg-mqYvUl2jDxipMxmN7nyU
-### 詳細設計書 
+### 詳細設計書
 https://docs.google.com/spreadsheets/d/12DnjDBeTlLwlQ1Wg2f5YK5wqx4b1EoX6EnrvQbWLvl0/edit#gid=0
 
 ## 実装機能(随時追加更新していきます)
