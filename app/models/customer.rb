@@ -20,7 +20,7 @@ class Customer < ApplicationRecord
   attachment :image
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |customer|
+    where(provider: auth.provider, uid: auth.uid).first_or_create! do |customer|
       customer.nickname = auth.info.name
       customer.email = auth.info.email
       customer.password = Devise.friendly_token[0,20]
