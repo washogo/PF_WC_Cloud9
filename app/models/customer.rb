@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :payment_methods, dependent: :destroy
 
-  validates :nickname, presence: true, uniqueness: true
+  validates :nickname, presence: true
 
   validates :is_deleted, inclusion: { in: [true, false] }
 
