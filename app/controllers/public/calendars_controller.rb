@@ -84,6 +84,7 @@ class Public::CalendarsController < ApplicationController
 
     def fetch_events(service)
       calendar_id = ENV["CALENDAR_ID"]
+      
       response = service.list_events(calendar_id,
                                    max_results:   10,
                                    single_events: true,
