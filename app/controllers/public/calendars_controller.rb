@@ -78,18 +78,21 @@ class Public::CalendarsController < ApplicationController
       @service.client_options.application_name = ENV["APPLICATION_NAME"]
       @service.authorization = authorize
       fetch_events(@service)
-      redirect_to action: :index
+      redirect_to root_path
     end
   
     def fetch_events(service)
       calendar_id = ENV["CALENDAR_ID"]
-      now = DateTime.now + 1
-      @response = @service.list_events(calendar_id,
-                                  max_results:   5,
-                                  single_events: true,
-                                  order_by:      "startTime",
-                                  time_min:      DateTime.new(now.year,now.month,now.day,0,0,0),
-                                  time_max:      DateTime.new(now.year,now.month,now.day,23,59,59) )
-      logger.debug(@response)
+      response = service.list_events(calendar_id,
+                                   max_results:   10,
+                                   single_events: true,
+                                   order_by:      "startTime",
+                                   time_min:      DateTime.now.rfc3339)
+      puts "Upcoming events:"
+      puts "No upcoming events found" if response.items.empty?
+      response.items.each do |event|
+        start = event.start.date || event.start.date_time
+        puts "- #{event.summary} (#{start})"
+      end
     end
 end
