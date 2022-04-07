@@ -63,7 +63,6 @@ class Public::CalendarsController < ApplicationController
       credentials = authorizer.get_credentials user_id
 
       if !credentials
-        byebug
         url = authorizer.get_authorization_url base_url: uri
         puts "Open the following URL in the browser and enter the " \
           "resulting code after authorization:\n" + url
