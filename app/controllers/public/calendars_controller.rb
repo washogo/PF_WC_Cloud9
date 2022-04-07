@@ -90,5 +90,6 @@ class Public::CalendarsController < ApplicationController
                                   order_by:      "startTime",
                                   time_min:      DateTime.new(now.year,now.month,now.day,0,0,0),
                                   time_max:      DateTime.new(now.year,now.month,now.day,23,59,59) )
+      logger.debug(@response)
     end
 end
