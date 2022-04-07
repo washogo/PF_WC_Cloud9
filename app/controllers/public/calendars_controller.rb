@@ -74,15 +74,14 @@ class Public::CalendarsController < ApplicationController
   end
   # Initialize the API
     def initialize
-      session[:code] = params[:code]
-      logger.debug(session[:code])
       @service = Google::Apis::CalendarV3::CalendarService.new
       @service.client_options.application_name = ENV["APPLICATION_NAME"]
       @service.authorization = authorize
       fetch_events(@service)
+      logger.debug(@service)
       redirect_to root_path
     end
-  
+
     def fetch_events(service)
       calendar_id = ENV["CALENDAR_ID"]
       response = service.list_events(calendar_id,
