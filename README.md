@@ -7,11 +7,10 @@
 - ３月１１日、講座購入の際に講座作成元にメール通知が届く機能を追加しました。
 - ３月１８日、「お名前.com」とRoute53を使用してドメインの取得を行いました。
 - ３月２９日、タグ付け機能と検索機能のバグを修正しました。
-- SNS認証のためにhttpからhttpsへ変更中
-- 変更過程でインターネット接続の不具合発生のため、再度ec2インスタンスを作成しデプロイ
+- ４月６日、EC2インスタンスを再作成しデプロイ　→　Route53でドメインを再取得　→　SSL証明書を取得しHTTPS通信を利用可能にする　→　Google認証を実装
 
 ## 今後の展望
-- 今後は、sns認証を追加し、googleのcalendar apiを導入して、タスク管理を実装します。
+- 今後は、googleのcalendar apiを導入して、タスク管理を実装します。
 また、UI/UXの向上のために、web apiとしてrailsを使用して、フロントをreactにする予定です。そして、google spreadsheet api を導入して、学習ロードマップを作成可能とするかどうか検討中です。
 - webRTCの導入を検討中
 
@@ -51,7 +50,7 @@ https://docs.google.com/spreadsheets/d/12DnjDBeTlLwlQ1Wg2f5YK5wqx4b1EoX6EnrvQbWL
 - [x] 講座検索
 - [x] ユーザー間コミュニケーション機能
 - [x] 講座注文時のメール通知機能
-- [ ] sns認証
+- [x] sns認証
 - [ ] google calendar apiでスケジュール及びタスク管理を行う機能
 - [ ] 機能は据え置きで、Ruby on Railsでweb apiを作成し、React.jsでapiを叩いて表示する。CSSフレームワークはChakra-UiかTailwindCSSを使用予定。
 - [ ] 決済システム
@@ -66,7 +65,7 @@ https://docs.google.com/spreadsheets/d/12DnjDBeTlLwlQ1Wg2f5YK5wqx4b1EoX6EnrvQbWL
 - テスト:RSpec
 
 ## インフラ、その他
-- AWS:EC2,RDS(MySQL)
+- AWS:EC2,RDS(MySQL),Route53,VPC
 - webサーバー:NGINX
 - アプリケーションサーバー:Puma
 
