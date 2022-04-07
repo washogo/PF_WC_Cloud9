@@ -88,7 +88,8 @@ class Public::CalendarsController < ApplicationController
                                    max_results:   10,
                                    single_events: true,
                                    order_by:      "startTime",
-                                   time_min:      DateTime.now.rfc3339)
+                                   time_min:      DateTime.new(now.year,now.month,now.day,0,0,0),
+                                   time_max:      DateTime.new(now.year,now.month,now.day,23,59,59) )
       puts "Upcoming events:"
       puts "No upcoming events found" if response.items.empty?
       response.items.each do |event|
