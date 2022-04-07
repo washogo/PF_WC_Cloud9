@@ -99,4 +99,7 @@ end
 # 日本語化
 gem 'rails-i18n'
 
-  gem 'listen', '>= 3.0.5', '< 3.2'
+gem 'listen', '>= 3.0.5', '< 3.2'
+
+gem 'google-apis-drive_v3'
+gem 'google-api-client', require: 'google/apis/calendar_v3'

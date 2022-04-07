@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope module: :public do
     root to: 'homes#top'
+    get '/privacy_policy', to: 'homes#privacy_policy'
     resources :customers, only:[:show]
     get '/current_customer/profile', to: 'customers#profile'
     patch '/current_customer', to: 'customers#update'
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
     resources :evaluations, only:[:new, :create, :show, :index]
     resources :comments
     resources :payment_methods, except:[:new, :show, :edit, :update]
+    get "/callback", to:"calendars#initialize"
+    get "/calendar/index", to:"calendars#index"
   end
 
   namespace :admin do
