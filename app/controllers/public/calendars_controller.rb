@@ -64,7 +64,7 @@ class Public::CalendarsController < ApplicationController
 
       if !credentials
         url = authorizer.get_authorization_url base_url: uri
-        logger.debug(url)
+        logger.debug("urlはこれだよ！"url)
         code = ENV["CODE"]
         credentials = authorizer.get_and_store_credentials_from_code(
           user_id: user_id, code: code, base_url: uri
@@ -74,6 +74,8 @@ class Public::CalendarsController < ApplicationController
   end
   # Initialize the API
     def initialize
+      session[:code] = params[:code]
+      logger.debug("codeだよ！"session[:code])
       @service = Google::Apis::CalendarV3::CalendarService.new
       @service.client_options.application_name = ENV["APPLICATION_NAME"]
       @service.authorization = authorize
