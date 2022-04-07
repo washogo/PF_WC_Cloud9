@@ -25,20 +25,6 @@ class Public::CalendarsController < ApplicationController
   end
 
   def authorize
-    # secret_hash = {
-    #   {
-    #     "type" => "service_account",
-    #     "project_id" => "learn-community-345904",
-    #     "private_key_id" => "ee8636616eb072cf1d53f6c5ef62354af1667628",
-    #     "private_key" => "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDzFr6QnshhhGIA\ngoGKX/nz2fTvYkzHkkFq43yEGHxviZnpbDPIC8LIcaOQHzjdtZ/wkMqQ3VuARV/L\npSNDJBdhIDQ1RB4xyjRaWr8ctsRUHR4hkmfaPOjoUY7mEJDTM1QvoHFNRwA5m+c/\npDzfCILDK4ZlX7DOErG1u+NdmoelhMmceJaN9mG6tiCcQbg5OwnfMjScXVV0UE/X\n02MQkg3lCLXtXIiSg8Zy947DUTb5j/dcXQkz0YggVFzUped5YeillUiuuQBa/AyM\nC76hGU3NZypLs4+2AyuQrDJY1ix+0o9z3emiiQEv/OV0Vo0c/IGm8rb1gtWURkgH\n5xLGFnMfAgMBAAECggEAK/O1Uf27mlIuzAvMs0HGNk52yF+cJUtu844dId8xhJM7\nFmbfd/CUb9yIJ9NVW1TvDbaIQagcVrV0bCQ4G3gnmAKUHftqgDMgwyN8QYtUNScs\nnwJTL7TqobK5ZSSiouU5eAEI62GGi2QCbFHcRbFKv1Ib0zF5jND5e7P0mKSLmSPu\nenpPEhBN797sImlpkFCQYKNGIvtAqZ/1IdxI96pszGij5G4ldUebtSlLzy6WkrQv\nDtXUQSn7bb615AjleFn+M0PmsST8OcLuduUUB8FnJTYFijo+KbLplPvByGTWWPj5\nb+URVnzERP+H6SRLEdCmVIkFl9tci1u0NASemEJ4mQKBgQD/L0PqRtvUG2Hlwms4\nP+yed4/UBIWo4CjLJW/41UW4r5oRbleYp229e+qtzzeUwAD/TIvHXfSptYJRoU6Z\nY0nQw8sCgJ8UO21V5aI9SJJ8wu3P5KiPHeF7vLIpU8ToDP0H7KyhlEw+u978YrKf\nWV366e9Tve+W3XfrS8BhaJ3rdwKBgQDz3ZXFuvhgDh5snrd8ywm5fTl4xguu762n\nYCoJppZfG2lBr/wMp1KipC0aJr4n106zjd68fm+Xov/aS0Ay+naJCifSVj++U+Ex\nmpJybn/nxCM+a2lnlUn7ynwvPAl2hwrk2cOUpwVGM5xZ+uA2Aaw97Yom/202d6E6\nxKrEqQ1PmQKBgETFeiojGo9ZKdL/yGGKaLx0QGDFLzhJ4PSOjFSlNXsGaCEWeaj8\nRkjwolhhJfuCm0IyYOFD4vHxpsNVE5em+He4rHdqLnUHZvnlPwoBCulwpyKF3x9i\n0CfGvMUCfGiFR5PhJs0M6Fdnzjp6ZuUm8nrynLsWzwD7gpv4+EnIJfcVAoGAckm0\nuXhIkuvLAmjX4Vpeclnnp1xZeWDGZ5y/1soFywjTqX9KhrucFLEQmiLyF0Xmkmu4\nqWov7kbr1WhS7BFJoCvsQb0+Hnq9HTwtygdTVlErm0NHoM3sYF6jGJfwb2YWiu4r\npO0poZ7qdZkHnwflqxg6GNC4ZEBohVxKE+SOYnECgYBvgC1cNibUXCRw8LDNaHGy\nlOZB4S9mVtebDBQQfBU1bibtNolAaALGI7NRGV+FZbsgoL5fhkRQda0IN8q0HIfo\nV+YGFtftRXsvaOTOAKaIEGLJQ+IjWb92vubhnK6/vdE2Fe8/lY4htQs4nl9zoVAu\nizOAsImrXm0ysk6DuShLNw==\n-----END PRIVATE KEY-----\n",
-    #     "client_email" => "user1-433@learn-community-345904.iam.gserviceaccount.com",
-    #     "client_id" => "110648055714233114419",
-    #     "auth_uri" => "https://accounts.google.com/o/oauth2/auth",
-    #     "token_uri" => "https://oauth2.googleapis.com/token",
-    #     "auth_provider_x509_cert_url" => "https://www.googleapis.com/oauth2/v1/certs",
-    #     "client_x509_cert_url" => "https://www.googleapis.com/robot/v1/metadata/x509/user1-433%40learn-community-345904.iam.gserviceaccount.com"
-    #   }
-    # }
     # 環境変数の定義
     uri = ENV["REDIRECT_URIS"]
     user_id = ENV["USER_ID"]
@@ -84,7 +70,7 @@ class Public::CalendarsController < ApplicationController
 
     def fetch_events(service)
       calendar_id = ENV["CALENDAR_ID"]
-      
+      now = DateTime.now + 1
       response = service.list_events(calendar_id,
                                    max_results:   10,
                                    single_events: true,
