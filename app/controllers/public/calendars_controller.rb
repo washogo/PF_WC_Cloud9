@@ -64,8 +64,7 @@ class Public::CalendarsController < ApplicationController
 
       if !credentials
         url = authorizer.get_authorization_url base_url: uri
-        puts "Open the following URL in the browser and enter the " \
-          "resulting code after authorization:\n" + url
+        logger.debug(url)
         code = ENV["CODE"]
         credentials = authorizer.get_and_store_credentials_from_code(
           user_id: user_id, code: code, base_url: uri
