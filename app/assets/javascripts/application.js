@@ -23,12 +23,12 @@
 
 /* global $ */
 $(document).on('turbolinks:load', function () {
+  // コメントモーダル
   $(document).on('click', '#open', function(){
     $('#modal').removeClass('hidden');
     $('#mask').removeClass('hidden');
   });
-
-
+  // サイドメニュー
   $('.tab').hover(function () {
     var index = $('.tab').index(this);
     $('.tab').removeClass('current');
@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function () {
     $(this).removeClass('current');
     $('.menu-box').hide();
   });
-
+  // ホバーダウンメニュー
   $('.menu').hover(function () {
     $(this).addClass('current');
   }, function () {

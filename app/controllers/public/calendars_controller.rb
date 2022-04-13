@@ -77,11 +77,6 @@ class Public::CalendarsController < ApplicationController
                                    order_by:      "startTime",
                                    time_min:      DateTime.new(now.year,now.month,now.day,0,0,0),
                                    time_max:      DateTime.new(now.year,now.month,now.day,23,59,59) )
-      puts "Upcoming events:"
-      puts "No upcoming events found" if response.items.empty?
-      response.items.each do |event|
-        start = event.start.date || event.start.date_time
-        puts "- #{event.summary} (#{start})"
-      end
+      logger.debug(response)
     end
 end
