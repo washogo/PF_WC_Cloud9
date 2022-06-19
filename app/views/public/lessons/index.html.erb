@@ -1,6 +1,8 @@
 <% if customer_signed_in? %>
   <%= render 'public/after_sign_in_nav', customer: current_customer %>
   <%= render 'public/menu' %>
+<% else %>
+  <%= render 'layouts/before_sign_in_nav' %>
 <% end %>
 <div class="container">
   <div class="row">
