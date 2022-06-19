@@ -1,5 +1,7 @@
-<%= render 'public/after_sign_in_nav', customer: current_customer %>
-<%= render 'public/menu' %>
+<% if customer_signed_in? %>
+  <%= render 'public/after_sign_in_nav', customer: current_customer %>
+  <%= render 'public/menu' %>
+<% end %>
 <div class="container">
   <div class="row">
     <%= render partial: 'layouts/sidebar', locals: { categories: @categories, tags: @tags } %>
