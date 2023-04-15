@@ -1,16 +1,19 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.7.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.5'
+# gem 'rails', '~> 5.2.5'
+gem 'rails', '~> 6.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'mysql2'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '>= 4.0'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sassc', '2.1.0'
+gem 'sass-rails', '6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -52,11 +55,11 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '~> 3.38'
   gem 'selenium-webdriver'
+  gem 'poltergeist', '~> 1.18', '>= 1.18.1'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'webdrivers', require: !ENV['SELENIUM_REMOTE_URL']
-  gem 'poltergeist'
+  gem 'webdrivers', '~> 5.2'
   gem 'database_cleaner'
   gem 'launchy'
 end
@@ -81,17 +84,19 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 # refileの導入
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
+gem 'refile', '0.6.2', git: 'https://github.com/manfe/refile.git'
+gem 'refile-mini_magick', git: 'https://github.com/refile/refile-mini_magick.git'
 
 # enumで定義した値をi18n化させて日本語に変換する
 gem 'enum_help'
 
 # RSpecの導入
-gem 'rspec-rails'
+gem 'rspec-rails', '4.0.0.beta2'
+# gem 'rspec-rails', '4.0.0'
 gem 'factory_bot_rails'
 
 gem 'dotenv-rails'
+
 group :production do
   gem 'mysql2'
 end

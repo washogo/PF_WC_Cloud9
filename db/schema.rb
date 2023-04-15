@@ -2,26 +2,27 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_061259) do
+ActiveRecord::Schema.define(version: 2023_03_23_032050) do
 
-  create_table "addresses", force: :cascade do |t|
+  create_table "addresses", charset: "utf8", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "name", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
+    t.integer "shipping_fee", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -33,27 +34,27 @@ ActiveRecord::Schema.define(version: 2022_04_02_061259) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "cart_lessons", force: :cascade do |t|
+  create_table "cart_lessons", charset: "utf8", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "lesson_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", charset: "utf8", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "customers", force: :cascade do |t|
+  create_table "customers", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
@@ -71,7 +72,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_061259) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "evaluations", force: :cascade do |t|
+  create_table "evaluations", charset: "utf8", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "evaluation", null: false
     t.datetime "created_at", null: false
@@ -80,7 +81,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_061259) do
     t.text "review", null: false
   end
 
-  create_table "have_lessons", force: :cascade do |t|
+  create_table "have_lessons", charset: "utf8", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "lesson_id", null: false
     t.integer "is_in_study", default: 0, null: false
@@ -89,7 +90,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_061259) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lessons", force: :cascade do |t|
+  create_table "lessons", charset: "utf8", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "category_id", null: false
     t.string "name", null: false
@@ -103,7 +104,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_061259) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_details", force: :cascade do |t|
+  create_table "order_details", charset: "utf8", force: :cascade do |t|
     t.integer "order_id", null: false
     t.integer "lesson_id", null: false
     t.integer "price", null: false
@@ -111,7 +112,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_061259) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", charset: "utf8", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "address_id", null: false
     t.integer "payment_method_id", null: false
@@ -122,28 +123,28 @@ ActiveRecord::Schema.define(version: 2022_04_02_061259) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "payment_methods", force: :cascade do |t|
+  create_table "payment_methods", charset: "utf8", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "method", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "reply_relationships", force: :cascade do |t|
+  create_table "reply_relationships", charset: "utf8", force: :cascade do |t|
     t.integer "main_comment_id", null: false
     t.integer "reply_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tag_lists", force: :cascade do |t|
+  create_table "tag_lists", charset: "utf8", force: :cascade do |t|
     t.integer "lesson_id", null: false
     t.integer "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
