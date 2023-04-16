@@ -37,6 +37,7 @@ Address.create!(
  name: "令和道子",
  postal_code: "1111111",
  address: "東京都渋谷区１丁目",
+ shipping_fee: 500,
 )
 
 Address.create!(
@@ -44,6 +45,7 @@ Address.create!(
  name: "平成道夫",
  postal_code: "2222222",
  address: "大阪府大阪市北区2丁目",
+ shipping_fee: 500,
 )
 
 Address.create!(
@@ -51,6 +53,7 @@ Address.create!(
  name: "昭和翔",
  postal_code: "3333333",
  address: "福岡県福岡市博多区３丁目",
+ shipping_fee: 500,
 )
 
 PaymentMethod.create!(
